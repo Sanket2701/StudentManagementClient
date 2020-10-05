@@ -1,0 +1,80 @@
+#co-curriculars-title {
+    display: flex;
+    justify-content: space-between;
+    color: #B7202E;
+    text-align: left;
+    margin-left: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.student-body-plus-icon, .project-competition-plus-icon, .student-publication-plus-icon {
+    width: 40px;
+    color: #B7202E;
+    height: 40px;
+    margin-right: 2%;
+    margin-bottom: 0.5rem;
+
+}
+
+.student-body-heading, .project-competition-heading, .student-publication-heading {
+    color: #B7202E;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+
+
+}
+
+
+.student-body-form, .project-competition-form, .student-publication-form {
+    margin-left: 300px;
+    max-width: 75%;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: black 0px 3px 6px;
+    margin-bottom: 30px;
+}
+
+.single-student-body-form, .single-project-competition-form, .single-student-publication-form {
+    max-width: 100%;
+    border: 1px solid black;
+    padding: 15px;
+
+}
+
+
+
+.co-curriculars-form-label {
+    text-align: left;
+    color: #B7202E;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.co-curriculars-form-fields {
+    padding: 8px;
+    max-width: 40%;
+    height: 40px;
+
+}
+
+
+.submit-button-student-body, .submit-button-project-competition, .submit-button-student-publications{
+    display: flex;
+    justify-content: flex-end;
+}
+#student-body-save-button, #project-competition-save-button, #student-publications-save-button {
+    background-color:#B7202E;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}
+#student-body-delete-button, #project-competition-delete-button, #student-publications-delete-button {
+    background-color:grey;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}

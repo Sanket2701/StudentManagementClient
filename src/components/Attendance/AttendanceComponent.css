@@ -1,0 +1,49 @@
+#attendance-title {
+    display: flex;
+    justify-content: space-between;
+    color: #B7202E;
+    text-align: left;
+    margin-left: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.single-attendance-form {
+    margin-left: 300px;
+    max-width: 75%;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: black 0px 3px 6px;
+    margin-bottom: 30px;
+}
+.attendance-form-label {
+    text-align: left;
+    color: #B7202E;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.attendance-form-fields {
+    padding: 8px;
+    max-width: 40%;
+    height: 40px;
+
+}
+.submit-button-attendance {
+    display: flex;
+    justify-content: flex-end;
+}
+#attendance-save-button {
+    background-color:#B7202E;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}
+#attendance-delete-button {
+    background-color:grey;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}

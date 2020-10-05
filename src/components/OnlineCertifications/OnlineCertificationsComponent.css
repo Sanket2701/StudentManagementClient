@@ -1,0 +1,73 @@
+#online-certification-title {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 300px;
+    color: #B7202E;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.plus-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10%;
+}
+
+.single-certification-form {
+    margin-left: 300px;
+    max-width: 75%;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: black 0px 3px 6px;
+}
+
+#online-certification-certificate-file {
+    max-width: 20%;
+}
+
+.photo-space, #online-certification-certificate-file {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 40%;
+    float: right;
+}
+
+.online-certification-form-label {
+    text-align: left;
+    color: #B7202E;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.online-certification-form-fields {
+    padding: 8px;
+    max-width: 40%;
+    height: 40px;
+}
+
+.online-certification-certificate {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    float: right;
+}
+.submit-button-online-certification {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#online-certification-save-button {
+    background-color:#B7202E;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}
+#online-certification-delete-button {
+    background-color:grey;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}

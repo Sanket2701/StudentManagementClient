@@ -1,0 +1,57 @@
+#title {
+    color: #B7202E;
+    text-align: left;
+    margin-left: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#academics-form {
+    margin-left: 300px;
+    max-width: 70%;
+}
+.image {
+    margin-left: 15px;
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+}
+.academics-form-fields {
+    max-width: 100%;
+    height: 40px;
+}
+.error-message {
+    text-align: left;
+}
+
+.academics-form-label {
+    color: #B7202E;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#CGPI {
+    text-align: left;
+}
+#sem-gpa {
+    display: flex;
+    justify-content: space-between;
+}
+#add-button {
+    background-color:#B7202E;
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin: 15px;
+}
+.submit-button {
+    float: right;
+}
+#save-button {
+    background-color:#B7202E;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+}

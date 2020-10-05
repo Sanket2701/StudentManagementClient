@@ -1,0 +1,31 @@
+.sidebar {
+    height: 100%;
+    width: 18%;
+    background-color: #B7202E;
+    position: fixed;
+    justify-content: center;
+}
+.sidebar-title, .sidebar-title:hover {
+    color: white;
+}
+
+.sidebar-item {
+    width: 100%;
+}
+.sidebar-text {
+    color: white;
+    opacity: 0.6;
+    font-size: 20px;
+}
+
+.sidebar-text:hover {
+    color: white;
+    opacity: 1;
+}
+.sidebar-text:active {
+    color: white;
+    opacity: 1;
+}
+.nav-link:active {
+    opacity: 1;
+}

@@ -1,0 +1,38 @@
+#setting-title {
+    display: flex;
+    justify-content: space-between;
+    color: #B7202E;
+    text-align: left;
+    margin-left: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.single-setting-form {
+    margin-left: 300px;
+    max-width: 75%;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.setting-form-label {
+    text-align: left;
+    color: #B7202E;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.setting-form-fields {
+    padding: 8px;
+    max-width: 40%;
+    height: 40px;
+}
+.submit-button-setting {
+    display: flex;
+    justify-content: flex-end;
+}
+#setting-save-button {
+    background-color:#B7202E;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin-right: 15px;
+}
