@@ -14,7 +14,7 @@ export const ConfigureStore = () => {
                 userRegister: RegisterModel,
                 userLogin: LoginModel,
                 userPersonalDetails: PersonalDetailsModel,
-                userInternships: InternshipModel,
+                userInternships: InternshipModel
             }),
         }),
         applyMiddleware(thunk, logger)

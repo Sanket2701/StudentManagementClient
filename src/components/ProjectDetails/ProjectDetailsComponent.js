@@ -178,6 +178,20 @@ export class SingleProject extends Component {
                                 }} />
                         </Col>
                     </Row>
+                    <Row>
+                        <Label htmlFor="certificateUrl" lg={3} className="co-curriculars-form-label">Certificate Url :*</Label>
+                        <Col className="co-curriculars-form-fields">
+                            <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
+                                placeholder=""
+                                validators={{
+                                    required
+                                }} />
+                            <Errors className="text-danger error-message" model=".certificateUrl" show="touched"
+                                messages={{
+                                    required: '*Required ',
+                                }} />
+                        </Col>
+                    </Row>
                     <Row className="submit-button-project-details">
                         <Button type="submit" id="project-details-delete-button">Delete</Button>
                         <Button type="submit" id="project-details-save-button">Save  <i class="fa fa-arrow-right"></i></Button>

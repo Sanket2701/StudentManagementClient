@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
     postInternships: (semester, companyName, duration, domain, stipend, certificateUrl) => dispatch(
         postInternships(semester, companyName, duration, domain, stipend, certificateUrl)
     ),
-    resetInternshipsForm: () => { dispatch(actions.reset('userInternships')) }
+    resetInternshipsForm: () => { dispatch(actions.reset('userInternships')) },
 });
 
 class Main extends Component {

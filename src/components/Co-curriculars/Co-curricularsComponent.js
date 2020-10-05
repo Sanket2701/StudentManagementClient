@@ -159,6 +159,20 @@ export class SingleProjectCompetition extends Component {
                                 />
                             </Col>
                         </Row>
+                        <Row>
+                            <Label htmlFor="certificateUrl" lg={3} className="co-curriculars-form-label">Certificate Url :*</Label>
+                            <Col className="co-curriculars-form-fields">
+                                <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
+                                    placeholder=""
+                                    validators={{
+                                        required
+                                    }} />
+                                <Errors className="text-danger error-message" model=".certificateUrl" show="touched"
+                                    messages={{
+                                        required: '*Required ',
+                                    }} />
+                            </Col>
+                        </Row>
                         <Row className="submit-button-student-body">
                             <Button type="submit" id="student-body-delete-button">Delete</Button>
                             <Button type="submit" id="student-body-save-button">Save  <i class="fa fa-arrow-right"></i></Button>
@@ -340,7 +354,20 @@ export class SingleStudentPublication extends Component {
                                     }} />
                             </Col>
                         </Row>
-
+                        <Row>
+                            <Label htmlFor="certificateUrl" lg={3} className="co-curriculars-form-label">Certificate Url :*</Label>
+                            <Col className="co-curriculars-form-fields">
+                                <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
+                                    placeholder=""
+                                    validators={{
+                                        required
+                                    }} />
+                                <Errors className="text-danger error-message" model=".certificateUrl" show="touched"
+                                    messages={{
+                                        required: '*Required ',
+                                    }} />
+                            </Col>
+                        </Row>
                         <Row className="submit-button-student-body">
                             <Button type="submit" id="student-body-delete-button">Delete</Button>
                             <Button type="submit" id="student-body-save-button">Save  <i class="fa fa-arrow-right"></i></Button>

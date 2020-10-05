@@ -275,7 +275,7 @@ class Internship extends Component {
                         <Row>
                             <Label htmlFor="certificateUrl" lg={3} className="internship-form-label">Certificate Url :*</Label>
                             <Col className="internship-form-fields">
-                                <Control.text model=".certificateUrl" id="certificateUrl" name="certificateUrl" className="form-control"
+                                <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required

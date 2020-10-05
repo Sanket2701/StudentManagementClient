@@ -96,7 +96,6 @@ export class SingleCertification extends Component {
                         <Label htmlFor="online-certification-details" lg={3} className="online-certification-form-label">Duration :*</Label>
                         <Label htmlFor="online-certification-from" lg={1} className="online-certification-form-label">From:*</Label>
                         <Col className="online-certification-form-fields">
-
                             <Control.text model=".online-certification-from" type="date" id="online-certification-from" name="online-certification-from" className="form-control"
                                 placeholder=""
                                 validators={{
@@ -116,6 +115,20 @@ export class SingleCertification extends Component {
                                     required
                                 }} />
                             <Errors className="text-danger error-message" model=".online-certification-to" show="touched"
+                                messages={{
+                                    required: '*Required ',
+                                }} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Label htmlFor="certificateUrl" lg={3} className="co-curriculars-form-label">Certificate Url :*</Label>
+                        <Col className="co-curriculars-form-fields">
+                            <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
+                                placeholder=""
+                                validators={{
+                                    required
+                                }} />
+                            <Errors className="text-danger error-message" model=".certificateUrl" show="touched"
                                 messages={{
                                     required: '*Required ',
                                 }} />

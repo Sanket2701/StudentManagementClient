@@ -98,7 +98,7 @@ export const postInternships = (semester, companyName, duration, domain, stipend
         });
         if (res.data.status === 'success') {
             console.log(res.data.data)
-            alert("Success");
+            alert("Internship posted");
         }
     } catch (err) {
         console.log('error', err.response.data.message);
