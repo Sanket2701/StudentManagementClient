@@ -20,7 +20,6 @@ class PersonalDetails extends Component {
     handlePersonalDetails(values) {
         this.props.postPersonalDetails(values.firstname, values.middlename, values.lastname, values.collegeId,
             values.dateOfBirth, values.contact, values.contactParent, values.address, values.addressPermanent, 'Abd');
-        this.props.resetPersonalDetailsForm();
     }
     render() {
         return (

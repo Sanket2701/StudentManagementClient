@@ -12,9 +12,8 @@ import CoCurriculars from './Co-curriculars/Co-curricularsComponent';
 import Attendance from './Attendance/AttendanceComponent';
 import Settings from './Settings/SettingsComponent';
 import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
-import { postRegister, postLogin, postPersonalDetails, postInternships } from '../redux/actionCreators';
+import { postRegister, postLogin, postPersonalDetails, postInternships, postAcademics } from '../redux/actionCreators';
 import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
 import history from '../history';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,11 +28,14 @@ const mapDispatchToProps = (dispatch) => ({
             postPersonalDetails(firstname, middlename, lastname, collegeId,
                 department, dateOfBirth, contact, contactParent, address, addressPermanent, profilePhoto)
         ),
-    resetPersonalDetailsForm: () => { dispatch(actions.reset('userPersonalDetails')) },
+    postAcademics: (nameOfSchool, sscAggregate, nameOfJuniorCollege,
+        hscAggregate, department, currentSemester, domainOfInterest, programmingLanguages) => dispatch(
+            postAcademics(nameOfSchool, sscAggregate, nameOfJuniorCollege,
+                hscAggregate, department, currentSemester, domainOfInterest, programmingLanguages)
+        ),
     postInternships: (semester, companyName, duration, domain, stipend, certificateUrl) => dispatch(
         postInternships(semester, companyName, duration, domain, stipend, certificateUrl)
     ),
-    resetInternshipsForm: () => { dispatch(actions.reset('userInternships')) },
 });
 
 class Main extends Component {
@@ -46,12 +48,11 @@ class Main extends Component {
                         <Route exact path="/register" component={() => <Register postRegister={this.props.postRegister} />} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/personaldetails" component={() => <PersonalDetails
-                            postPersonalDetails={this.props.postPersonalDetails}
-                            resetPersonalDetailsForm={this.props.resetPersonalDetailsForm} />} />
-                        <Route exact path="/academics" component={Academics} />
+                            postPersonalDetails={this.props.postPersonalDetails} />} />
+                        <Route exact path="/academics" component={() => <Academics
+                            postAcademics={this.props.postAcademics} />} />
                         <Route exact path="/internships" component={() => <Internship
-                            postInternships={this.props.postInternships}
-                            resetInternshipsForm={this.props.resetInternshipsForm} />} />
+                            postInternships={this.props.postInternships} />} />
                         <Route exact path="/projectdetails" component={ProjectDetails} />
                         <Route exact path="/onlinecertifications" component={OnlineCertification} />
                         <Route exact path="/co-curriculars" component={CoCurriculars} />

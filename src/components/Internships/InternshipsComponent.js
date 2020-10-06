@@ -188,7 +188,6 @@ class Internship extends Component {
     handleInternships(values) {
         this.props.postInternships(values.semester, values.companyName, values.duration, values.domain,
             values.stipend, values.certificateUrl);
-        this.props.resetInternshipsForm();
     }
 
     render() {

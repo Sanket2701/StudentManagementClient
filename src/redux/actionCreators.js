@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../history';
+import { actions } from 'react-redux-form';
 
 var username = '';
 export const postRegister = (name, email, collegeId, password, passwordConfirm) => async (dispatch) => {
@@ -75,10 +76,41 @@ export const postPersonalDetails = (firstname, middlename, lastname, collegeId,
             if (res.data.status === 'success') {
                 console.log(res.data.data)
                 alert("Success");
+                dispatch(actions.reset('userPersonalDetails'));
             }
         } catch (err) {
             console.log('error', err.response.data.message);
             alert(err.response.data.message);
+            dispatch(actions.reset('userPersonalDetails'))
+        }
+    }
+export const postAcademics = (nameOfSchool, sscAggregate, nameOfJuniorCollege,
+    hscAggregate, department, currentSemester, domainOfInterest, programmingLanguages) => async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/academics',
+                data: {
+                    token: sessionStorage.getItem('token'),
+                    nameOfSchool: nameOfSchool,
+                    sscAggregate: sscAggregate,
+                    nameOfJuniorCollege: nameOfJuniorCollege,
+                    hscAggregate: hscAggregate,
+                    department: department,
+                    currentSemester: currentSemester,
+                    domainOfInterest: domainOfInterest,
+                    programmingLanguages: programmingLanguages,
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data)
+                alert("Success");
+                dispatch(actions.reset('userAcademics'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userAcademics'));
         }
     }
 export const postInternships = (semester, companyName, duration, domain, stipend, certificateUrl) => async (dispatch) => {
@@ -99,9 +131,11 @@ export const postInternships = (semester, companyName, duration, domain, stipend
         if (res.data.status === 'success') {
             console.log(res.data.data)
             alert("Internship posted");
+            dispatch(actions.reset('userInternships'));
         }
     } catch (err) {
         console.log('error', err.response.data.message);
         alert(err.response.data.message);
+        dispatch(actions.reset('userInternships'));
     }
 }
