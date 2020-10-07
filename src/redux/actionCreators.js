@@ -1,8 +1,7 @@
 import axios from 'axios';
-import history from '../history';
+import history from './history';
 import { actions } from 'react-redux-form';
 
-var username = '';
 export const postRegister = (name, email, collegeId, password, passwordConfirm) => async (dispatch) => {
     try {
         const res = await axios({
@@ -42,12 +41,9 @@ export const postLogin = (email, password) => async (dispatch) => {
             console.log('Success', 'Logged in successfully');
             alert('Success\nLogged in successfully');
             localStorage.setItem('token', res.data.token);
-            sessionStorage.setItem('token', res.data.token);
+            localStorage.setItem('username', res.data.data.user.name);
             history.push('/personaldetails');
         }
-        console.log(res.data.data.user.name);
-        username = res.data.data.user.name;
-        console.log(username);
     } catch (err) {
         console.log('error', err.response.data.message);
         alert(err.response.data.message);
@@ -60,7 +56,7 @@ export const postPersonalDetails = (firstname, middlename, lastname, collegeId,
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/personaldetails',
                 data: {
-                    token: sessionStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     firstname: firstname,
                     middlename: middlename,
                     lastname: lastname,
@@ -91,7 +87,7 @@ export const postAcademics = (nameOfSchool, sscAggregate, nameOfJuniorCollege,
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/academics',
                 data: {
-                    token: sessionStorage.getItem('token'),
+                    token: localStorage.getItem('token'),
                     nameOfSchool: nameOfSchool,
                     sscAggregate: sscAggregate,
                     nameOfJuniorCollege: nameOfJuniorCollege,
@@ -119,7 +115,7 @@ export const postInternships = (semester, companyName, duration, domain, stipend
             method: 'POST',
             url: 'http://127.0.0.1:5000/api/v1/internship',
             data: {
-                token: sessionStorage.getItem('token'),
+                token: localStorage.getItem('token'),
                 semester: semester,
                 companyName: companyName,
                 duration: duration,
@@ -139,3 +135,137 @@ export const postInternships = (semester, companyName, duration, domain, stipend
         dispatch(actions.reset('userInternships'));
     }
 }
+
+export const postStudentBodyDetails = (year, name, post) => async (dispatch) => {
+    try {
+        const res = await axios({
+            method: 'POST',
+            url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentBody',
+            data: {
+                token: localStorage.getItem('token'),
+                year: year,
+                name: name,
+                post: post
+            },
+        });
+        if (res.data.status === 'success') {
+            console.log(res.data.data)
+            alert("Student Body Details posted");
+            dispatch(actions.reset('userStudentBodyDetails'));
+        }
+    } catch (err) {
+        console.log('error', err.response.data.message);
+        alert(err.response.data.message);
+        dispatch(actions.reset('userStudentBodyDetails'));
+    }
+}
+
+export const postStudentProjectCompetition = (year, competitionName, projectTitle, role, position, certificateUrl) => async (dispatch) => {
+    try {
+        const res = await axios({
+            method: 'POST',
+            url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentProject',
+            data: {
+                token: localStorage.getItem('token'),
+                year: year,
+                competitionName: competitionName,
+                projectTitle: projectTitle,
+                role: role,
+                position: position,
+                certificateUrl: certificateUrl
+            },
+        });
+        if (res.data.status === 'success') {
+            console.log(res.data.data)
+            alert("Student Project Competition posted");
+            dispatch(actions.reset('userStudentProjectCompetition'));
+        }
+    } catch (err) {
+        console.log('error', err.response.data.message);
+        alert(err.response.data.message);
+        dispatch(actions.reset('userStudentProjectCompetition'));
+    }
+}
+export const postStudentPublication = (title, year, author, dateOfIssue, volume, pageNumber,
+    publisher, ISBN, paperType, paperLevel, certificateUrl) => async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentPublication',
+                data: {
+                    token: localStorage.getItem('token'),
+                    title: title,
+                    year: year,
+                    author: author,
+                    dateOfIssue: dateOfIssue,
+                    volume: volume,
+                    pageNumber: pageNumber,
+                    publisher: publisher,
+                    ISBN: ISBN,
+                    paperType: paperType,
+                    paperLevel: paperLevel,
+                    certificateUrl: certificateUrl
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data)
+                alert("Student Publication posted");
+                dispatch(actions.reset('userStudentPublication'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userStudentPublication'));
+        }
+    }
+export const postExtraCurriculars = (semester, activity, levelActivity, position, certificateUrl) =>
+    async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/extraCurriculars',
+                data: {
+                    token: localStorage.getItem('token'),
+                    semester: semester,
+                    activity: activity,
+                    levelActivity: levelActivity,
+                    position: position,
+                    certificateUrl: certificateUrl
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data)
+                alert("Student Extra-Curriculars posted");
+                dispatch(actions.reset('userExtraCurriculars'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userExtraCurriculars'));
+        }
+    }
+
+export const postAttendance = (semester, tAttendance, praticalAttendance) =>
+    async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/users/attendance',
+                data: {
+                    token: localStorage.getItem('token'),
+                    semester: semester,
+                    theoryAttendance: tAttendance,
+                    praticalAttendance: praticalAttendance
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data)
+                alert("Student Attendance posted");
+                dispatch(actions.reset('userAttendance'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userAttendance'));
+        }
+    }

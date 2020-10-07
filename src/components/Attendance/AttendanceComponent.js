@@ -2,22 +2,32 @@ import React, { Component } from 'react';
 import Sidebar from '../Sidebar/SidebarComponent';
 import './AttendanceComponent.css';
 import { Button, Row, Col, Label } from 'reactstrap';
-import { LocalForm, Control, Errors } from 'react-redux-form';
+import { Form, Control, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 
-class Attendance extends Component {
+class AttendanceComponent extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleAttendance = this.handleAttendance.bind(this);
+    }
+
+    handleAttendance(values) {
+        this.props.postAttendance(values.semester, values.theoryAttendance, values.praticalAttendance);
+    }
+
     render() {
         return (
             <div>
                 <Sidebar />
                 <div id="attendance-title"><h1>Attendance</h1></div>
                 <div className="single-attendance-form">
-                    <LocalForm>
+                    <Form model="userAttendance" onSubmit={(values) => this.handleAttendance(values)}>
                         <Row>
-                            <Label htmlFor="attendance_semester" lg={3} className="attendance-form-label">Semester :*</Label>
+                            <Label htmlFor="semester" lg={3} className="attendance-form-label">Semester :*</Label>
                             <Col className="attendance-form-fields">
-                                <Control.select model=".attendance_semester" id="attendance_semester" name="attendance_semester" className="form-control"
+                                <Control.select model=".semester" id="attendance_semester" name="semester" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
@@ -32,35 +42,35 @@ class Attendance extends Component {
                                     <option>7</option>
                                     <option>8</option>
                                 </Control.select>
-                                <Errors className="text-danger error-message" model=".attendance_semester" show="touched"
+                                <Errors className="text-danger error-message" model=".semester" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="attendance_theory" lg={3} className="attendance-form-label">Theory Attendance :*</Label>
+                            <Label htmlFor="tAttendance" lg={3} className="attendance-form-label">Theory Attendance :*</Label>
                             <Col className="attendance-form-fields">
-                                <Control.text model=".attendance_theory" id="attendance_theory" name="attendance_theory" className="form-control"
+                                <Control.text model=".theoryAttendance" id="tAttendance" name="theoryAttendance" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
                                     }} />
-                                <Errors className="text-danger error-message" model=".attendance_theory" show="touched"
+                                <Errors className="text-danger error-message" model=".theoryAttendance" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="attendance_practical" lg={3} className="attendance-form-label">Practical Attendance :*</Label>
+                            <Label htmlFor="pAttendance" lg={3} className="attendance-form-label">Practical Attendance :*</Label>
                             <Col className="attendance-form-fields">
-                                <Control.text model=".attendance_practical" id="attendance_practical" name="attendance_practical" className="form-control"
+                                <Control.text model=".praticalAttendance" id="pAttendance" name="praticalAttendance" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
                                     }} />
-                                <Errors className="text-danger error-message" model=".attendance_practical" show="touched"
+                                <Errors className="text-danger error-message" model=".praticalAttendance" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
@@ -72,11 +82,11 @@ class Attendance extends Component {
                             <Button type="submit" id="attendance-save-button">Save
                                     <i className="fa fa-arrow-right"></i></Button>
                         </Row>
-                    </LocalForm>
+                    </Form>
                 </div>
             </div >
         );
     }
 }
 
-export default Attendance;
+export default AttendanceComponent;

@@ -2,22 +2,34 @@ import React, { Component } from 'react';
 import Sidebar from '../Sidebar/SidebarComponent';
 import './Extra-curricularsComponent.css';
 import { Button, Row, Col, Label } from 'reactstrap';
-import { LocalForm, Control, Errors } from 'react-redux-form';
+import { Form, Control, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 
 class ExtraCurriculars extends Component {
+
+    constructor(props) {
+        super(props);
+        console.log(props);
+        this.handleExtraCurriculars = this.handleExtraCurriculars.bind(this);
+    }
+
+    handleExtraCurriculars(values) {
+        this.props.postExtraCurriculars(values.semester, values.activity, values.levelActivity,
+            values.position, values.certificateUrl);
+    }
+
     render() {
         return (
             <div>
                 <Sidebar />
                 <div id="extracurricular-title"><h1>Extra-Curriculars</h1></div>
                 <div className="single-extracurricular-form">
-                    <LocalForm>
+                    <Form model="userExtraCurriculars" onSubmit={(values) => this.handleExtraCurriculars(values)}>
                         <Row>
-                            <Label htmlFor="extracurricular_done_during_semester" lg={3} className="extracurricular-form-label">Done During Semester :*</Label>
+                            <Label htmlFor="semester" lg={3} className="extracurricular-form-label">Done During Semester :*</Label>
                             <Col className="extracurricular-form-fields">
-                                <Control.select model=".extracurricular_done_during_semester" id="extracurricular_done_during_semester" name="extracurricular_done_during_semester" className="form-control"
+                                <Control.select model=".semester" id="extra-curricular-semester" name="semester" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
@@ -32,52 +44,52 @@ class ExtraCurriculars extends Component {
                                     <option>7</option>
                                     <option>8</option>
                                 </Control.select>
-                                <Errors className="text-danger error-message" model=".extracurricular_done_during_semester" show="touched"
+                                <Errors className="text-danger error-message" model=".semester" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="extracurricular_activity" lg={3} className="extracurricular-form-label">Activity :*</Label>
+                            <Label htmlFor="activity" lg={3} className="extracurricular-form-label">Activity :*</Label>
                             <Col className="extracurricular-form-fields">
-                                <Control.text model=".extracurricular_activity" id="extracurricular_activity" name="extracurricular_activity" className="form-control"
+                                <Control.text model=".activity" id="extra-curricular-activity" name="activity" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
                                     }} />
-                                <Errors className="text-danger error-message" model=".extracurricular_activity" show="touched"
+                                <Errors className="text-danger error-message" model=".activity" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="extracurricular_level_of_activity" lg={3} className="extracurricular-form-label">Level of Activity :*</Label>
+                            <Label htmlFor="levelActivity" lg={3} className="extracurricular-form-label">Level of Activity :*</Label>
                             <Col className="extracurricular-form-fields">
-                                <Control.text model=".extracurricular_level_of_activity" id="extracurricular_level_of_activity" name="extracurricular_level_of_activity" className="form-control"
+                                <Control.text model=".levelActivity" id="extra-curricular-levelActivity" name="levelActivity" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
                                     }} />
-                                <Errors className="text-danger error-message" model=".extracurricular_level_of_activity" show="touched"
+                                <Errors className="text-danger error-message" model=".levelActivity" show="touched"
                                     messages={{
                                         required: '*Required ',
                                     }} />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="extracurricular_position" lg={3} className="extracurricular-form-label">Position (if required) :</Label>
+                            <Label htmlFor="position" lg={3} className="extracurricular-form-label">Position (if acquired) :</Label>
                             <Col className="extracurricular-form-fields">
-                                <Control.text model=".extracurricular_position" id="extracurricular_position" name="extracurricular_position" className="form-control"
+                                <Control.text model=".position" id="extra-curricular-position" name="position" className="form-control"
                                     placeholder=""
                                 />
                             </Col>
                         </Row>
                         <Row>
-                            <Label htmlFor="certificateUrl" lg={3} className="co-curriculars-form-label">Certificate Url :*</Label>
-                            <Col className="co-curriculars-form-fields">
-                                <Control.text model=".certificateUrl" type="url" id="certificateUrl" name="certificateUrl" className="form-control"
+                            <Label htmlFor="certificateUrl" lg={3} className="extracurricular-form-label">Certificate Url :*</Label>
+                            <Col className="extracurricular-form-fields">
+                                <Control.text model=".certificateUrl" type="url" id="extra-curricular-certificateUrl" name="certificateUrl" className="form-control"
                                     placeholder=""
                                     validators={{
                                         required
@@ -94,7 +106,7 @@ class ExtraCurriculars extends Component {
                             <Button type="submit" id="extracurricular-save-button">Save
                                     <i className="fa fa-arrow-right"></i></Button>
                         </Row>
-                    </LocalForm>
+                    </Form>
                 </div>
             </div>
         );

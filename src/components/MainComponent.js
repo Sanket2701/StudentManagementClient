@@ -9,12 +9,16 @@ import Internship from './Internships/InternshipsComponent';
 import ProjectDetails from './ProjectDetails/ProjectDetailsComponent';
 import OnlineCertification from './OnlineCertifications/OnlineCertificationsComponent';
 import CoCurriculars from './Co-curriculars/Co-curricularsComponent';
-import Attendance from './Attendance/AttendanceComponent';
+import AttendanceComponent from './Attendance/AttendanceComponent';
 import Settings from './Settings/SettingsComponent';
 import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
-import { postRegister, postLogin, postPersonalDetails, postInternships, postAcademics } from '../redux/actionCreators';
+import {
+    postRegister, postLogin, postPersonalDetails, postInternships, postAcademics,
+    postStudentBodyDetails, postStudentProjectCompetition, postStudentPublication, postExtraCurriculars,
+    postAttendance
+} from '../redux/actionCreators';
 import { connect } from 'react-redux';
-import history from '../history';
+import history from '../redux/history';
 
 const mapDispatchToProps = (dispatch) => ({
     postRegister: (name, email, collegeId, password, passwordConfirm) => dispatch(
@@ -36,6 +40,23 @@ const mapDispatchToProps = (dispatch) => ({
     postInternships: (semester, companyName, duration, domain, stipend, certificateUrl) => dispatch(
         postInternships(semester, companyName, duration, domain, stipend, certificateUrl)
     ),
+    postStudentBodyDetails: (year, name, post) => dispatch(
+        postStudentBodyDetails(year, name, post)
+    ),
+    postStudentProjectCompetition: (year, competitionName, projectTitle, role, position, certificateUrl) => dispatch(
+        postStudentProjectCompetition(year, competitionName, projectTitle, role, position, certificateUrl)
+    ),
+    postStudentPublication: (title, year, author, dateOfIssue, volume, pageNumber,
+        publisher, ISBN, paperType, paperLevel, certificateUrl) => dispatch(
+            postStudentPublication(title, year, author, dateOfIssue, volume, pageNumber,
+                publisher, ISBN, paperType, paperLevel, certificateUrl)
+        ),
+    postExtraCurriculars: (semester, activity, levelActivity, position, certificateUrl) => dispatch(
+        postExtraCurriculars(semester, activity, levelActivity, position, certificateUrl)
+    ),
+    postAttendance: (semester, tAttendance, praticalAttendance) => dispatch(
+        postAttendance(semester, tAttendance, praticalAttendance)
+    )
 });
 
 class Main extends Component {
@@ -55,9 +76,14 @@ class Main extends Component {
                             postInternships={this.props.postInternships} />} />
                         <Route exact path="/projectdetails" component={ProjectDetails} />
                         <Route exact path="/onlinecertifications" component={OnlineCertification} />
-                        <Route exact path="/co-curriculars" component={CoCurriculars} />
-                        <Route exact path="/extra-curriculars" component={ExtraCurriculars} />
-                        <Route exact path="/attendance" component={Attendance} />
+                        <Route exact path="/co-curriculars" component={() => <CoCurriculars
+                            postStudentBodyDetails={this.props.postStudentBodyDetails}
+                            postStudentProjectCompetition={this.props.postStudentProjectCompetition}
+                            postStudentPublication={this.props.postStudentPublication} />} />
+                        <Route exact path="/extra-curriculars" component={() => <ExtraCurriculars
+                            postExtraCurriculars={this.props.postExtraCurriculars} />} />
+                        <Route exact path="/attendance" component={() => <AttendanceComponent
+                            postAttendance={this.props.postAttendance} />} />
                         <Route exact path="/settings" component={Settings} />
                         <Redirect to="/login" />
                     </Switch>

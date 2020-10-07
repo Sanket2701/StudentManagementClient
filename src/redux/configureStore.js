@@ -7,6 +7,11 @@ import { LoginModel } from './formModel/loginModel';
 import { PersonalDetailsModel } from './formModel/personalDetailsModel';
 import { InternshipModel } from './formModel/internshipModel';
 import { AcademicsModel } from './formModel/academicModel';
+import { StudentBodyModel } from './formModel/studentBodyModel';
+import { StudentProjectCompetitionModel } from './formModel/studentProjectCompetitionModel';
+import { StudentPublicationModel } from './formModel/studentPublicationModel';
+import { ExtraCurricularModel } from './formModel/extraCurricularModel';
+import { AttendanceModel } from './formModel/attendanceModel';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -16,7 +21,12 @@ export const ConfigureStore = () => {
                 userLogin: LoginModel,
                 userPersonalDetails: PersonalDetailsModel,
                 userAcademics: AcademicsModel,
-                userInternships: InternshipModel
+                userInternships: InternshipModel,
+                userStudentBodyDetails: StudentBodyModel,
+                userStudentProjectCompetition: StudentProjectCompetitionModel,
+                userStudentPublication: StudentPublicationModel,
+                userExtraCurriculars: ExtraCurricularModel,
+                userAttendance: AttendanceModel
             }),
         }),
         applyMiddleware(thunk, logger)
