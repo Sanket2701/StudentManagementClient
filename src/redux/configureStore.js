@@ -12,6 +12,8 @@ import { StudentProjectCompetitionModel } from './formModel/studentProjectCompet
 import { StudentPublicationModel } from './formModel/studentPublicationModel';
 import { ExtraCurricularModel } from './formModel/extraCurricularModel';
 import { AttendanceModel } from './formModel/attendanceModel';
+import { ProjectDetailsModel } from './formModel/projectDetailsModel';
+import { OnlineCertificationModel } from './formModel/onlineCertificationsModel';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -22,6 +24,8 @@ export const ConfigureStore = () => {
                 userPersonalDetails: PersonalDetailsModel,
                 userAcademics: AcademicsModel,
                 userInternships: InternshipModel,
+                userProjectDetails: ProjectDetailsModel,
+                userOnlineCertification: OnlineCertificationModel,
                 userStudentBodyDetails: StudentBodyModel,
                 userStudentProjectCompetition: StudentProjectCompetitionModel,
                 userStudentPublication: StudentPublicationModel,

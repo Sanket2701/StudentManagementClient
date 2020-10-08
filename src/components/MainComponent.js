@@ -15,7 +15,7 @@ import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
 import {
     postRegister, postLogin, postPersonalDetails, postInternships, postAcademics,
     postStudentBodyDetails, postStudentProjectCompetition, postStudentPublication, postExtraCurriculars,
-    postAttendance
+    postAttendance, postProjectDetails, postOnlineCertifications
 } from '../redux/actionCreators';
 import { connect } from 'react-redux';
 import history from '../redux/history';
@@ -56,6 +56,15 @@ const mapDispatchToProps = (dispatch) => ({
     ),
     postAttendance: (semester, tAttendance, praticalAttendance) => dispatch(
         postAttendance(semester, tAttendance, praticalAttendance)
+    ),
+    postProjectDetails: (semester, title, from, to, role, mentor, funded, investor,
+        skillsDeveloped, certificateUrl) => dispatch(
+            postProjectDetails(semester, title, from, to, role, mentor, funded, investor,
+                skillsDeveloped, certificateUrl)
+        ),
+    postOnlineCertifications: (semester, platform, domain, title, from, to, certificateUrl) => dispatch(
+        postOnlineCertifications(semester, platform, domain, title, from, to,
+            certificateUrl)
     )
 });
 
@@ -74,8 +83,10 @@ class Main extends Component {
                             postAcademics={this.props.postAcademics} />} />
                         <Route exact path="/internships" component={() => <Internship
                             postInternships={this.props.postInternships} />} />
-                        <Route exact path="/projectdetails" component={ProjectDetails} />
-                        <Route exact path="/onlinecertifications" component={OnlineCertification} />
+                        <Route exact path="/projectdetails" component={() => <ProjectDetails
+                            postProjectDetails={this.props.postProjectDetails} />} />
+                        <Route exact path="/onlinecertifications" component={() => <OnlineCertification
+                            postOnlineCertifications={this.props.postOnlineCertifications} />} />
                         <Route exact path="/co-curriculars" component={() => <CoCurriculars
                             postStudentBodyDetails={this.props.postStudentBodyDetails}
                             postStudentProjectCompetition={this.props.postStudentProjectCompetition}

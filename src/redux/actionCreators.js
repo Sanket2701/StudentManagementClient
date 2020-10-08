@@ -269,3 +269,64 @@ export const postAttendance = (semester, tAttendance, praticalAttendance) =>
             dispatch(actions.reset('userAttendance'));
         }
     }
+
+export const postProjectDetails = (semester, title, from, to, role, mentor, funded, investor,
+    skillsDeveloped, certificateUrl) => async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/project',
+                data: {
+                    token: localStorage.getItem('token'),
+                    semester: semester,
+                    title: title,
+                    from: from,
+                    to: to,
+                    role: role,
+                    mentor: mentor,
+                    funded: funded,
+                    investor: investor,
+                    skillsDeveloped: skillsDeveloped,
+                    certificateUrl: certificateUrl
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data)
+                alert("Project Details posted");
+                dispatch(actions.reset('userProjectDetails'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userProjectDetails'));
+        }
+    }
+
+export const postOnlineCertifications = (semester, platform, domain, title, from, to,
+    certificateUrl) => async (dispatch) => {
+        try {
+            const res = await axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:5000/api/v1/onlineCertification',
+                data: {
+                    token: localStorage.getItem('token'),
+                    sem: semester,
+                    platform: platform,
+                    domain: domain,
+                    title: title,
+                    from: from,
+                    to: to,
+                    certificateUrl: certificateUrl
+                },
+            });
+            if (res.data.status === 'success') {
+                console.log(res.data.data);
+                alert("Online Certification posted");
+                dispatch(actions.reset('userOnlineCertification'));
+            }
+        } catch (err) {
+            console.log('error', err.response.data.message);
+            alert(err.response.data.message);
+            dispatch(actions.reset('userOnlineCertification'));
+        }
+    }
