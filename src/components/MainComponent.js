@@ -13,12 +13,20 @@ import AttendanceComponent from './Attendance/AttendanceComponent';
 import Settings from './Settings/SettingsComponent';
 import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
 import {
-    postRegister, postLogin, postPersonalDetails, postInternships, postAcademics,
+    postRegister, postLogin, postInternships, postAcademics,
     postStudentBodyDetails, postStudentProjectCompetition, postStudentPublication, postExtraCurriculars,
     postAttendance, postProjectDetails, postOnlineCertifications
 } from '../redux/actionCreators';
+import { postPersonalDetails, getPersonalDetails } from '../redux/ActionCreators/personalDetailsActionCreators';
 import { connect } from 'react-redux';
 import history from '../redux/history';
+
+const mapStateToProps = state => {
+    return {
+        personaldetails: state.personaldetails
+    }
+}
+
 
 const mapDispatchToProps = (dispatch) => ({
     postRegister: (name, email, collegeId, password, passwordConfirm) => dispatch(
@@ -65,18 +73,35 @@ const mapDispatchToProps = (dispatch) => ({
     postOnlineCertifications: (semester, platform, domain, title, from, to, certificateUrl) => dispatch(
         postOnlineCertifications(semester, platform, domain, title, from, to,
             certificateUrl)
-    )
+    ),
+    getPersonalDetails: () => { dispatch(getPersonalDetails()) }
 });
 
 class Main extends Component {
+
+    componentDidMount() {
+        this.props.getPersonalDetails();
+    }
+
     render() {
+
+        const HomePage = () => {
+            return (
+                <div>
+                    <Home personaldetail={this.props.personaldetails.allPersonalDetails}
+                        isLoading={this.props.personaldetails.isLoading}
+                        isError={this.props.personaldetails.error} />
+                </div>
+            );
+        }
+
         return (
             <div>
                 <Router history={history}>
                     <Switch>
                         <Route exact path="/login" component={() => <Login postLogin={this.props.postLogin} />} />
                         <Route exact path="/register" component={() => <Register postRegister={this.props.postRegister} />} />
-                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/home" component={HomePage} />
                         <Route exact path="/personaldetails" component={() => <PersonalDetails
                             postPersonalDetails={this.props.postPersonalDetails} />} />
                         <Route exact path="/academics" component={() => <Academics
@@ -104,4 +129,4 @@ class Main extends Component {
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

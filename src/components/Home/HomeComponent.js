@@ -3,6 +3,7 @@ import Sidebar from '../Sidebar/SidebarComponent';
 import './HomeComponent.css';
 import { Row, Col, Button, Label, Card, CardBody, CardTitle, CardText, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
+import { Loading } from '../LoadingComponent';
 
 const required = (val) => val && val.length;
 const internshipData = [
@@ -27,48 +28,58 @@ const onlineCertificationsData = [
     { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
 ]
 const attendanceData = [
-    {sem: 1, avg: "100%"},
-    {sem: 2, avg: "100%"},
-    {sem: 3, avg: "100%"},
-    {sem: 4, avg: "100%"},
-    {sem: 5, avg: "100%"},
-    {sem: 6, avg: "100%"},
+    { sem: 1, avg: "100%" },
+    { sem: 2, avg: "100%" },
+    { sem: 3, avg: "100%" },
+    { sem: 4, avg: "100%" },
+    { sem: 5, avg: "100%" },
+    { sem: 6, avg: "100%" },
 ]
 const studentBodyDetailsData = [
-    {year: "2020-2021", committee: "CSI", position: "chairperson"},
-    {year: "2021-2022", committee: "ACS", position: "chairperson"},
+    { year: "2020-2021", committee: "CSI", position: "chairperson" },
+    { year: "2021-2022", committee: "ACS", position: "chairperson" },
 ]
 const projectCompetitionDetailsData = [
-    {year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer"},
-    {year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer"},
-    {year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer"},
-    {year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer"},
+    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
+    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
+    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
+    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
 
 ]
 const studentPublicationsData = [
-    {year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils"},
-    {year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils"},
-    {year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils"},
+    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
+    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
+    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
 ]
 const extraCurricularsData = [
-    {semester: 4, activity: "table tennis", level: "national"},
-    {semester: 4, activity: "table tennis", level: "national"},
-    {semester: 4, activity: "table tennis", level: "national"},
+    { semester: 4, activity: "table tennis", level: "national" },
+    { semester: 4, activity: "table tennis", level: "national" },
+    { semester: 4, activity: "table tennis", level: "national" },
 ]
-function RenderPersonalDetails() {
-    return (
+function RenderPersonalDetails({ item, isLoading, isError }) {
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="personal-details-card">
             <CardBody>
                 <CardTitle className="card-title">Personal Details</CardTitle>
                 <CardText>
                     <Row>
-                        <Col>Devansh Bagaria</Col>
+                        <Col>{item.firstname} {item.lastname}</Col>
                     </Row>
                     <Row>
-                        <Col>dd/mm/yyyy</Col>
+                        <Col>ID-Card Number: {item.collegeId}</Col>
                     </Row>
                     <Row>
-                        <Col>Contact Number: </Col>
+                        <Col>Contact Number: {item.contact} </Col>
                     </Row>
                 </CardText>
                 <Button className="card-button">See All Personal Details</Button>
@@ -91,7 +102,7 @@ function RenderAcademics() {
                         <Col>Programming Skills: Python, Javasript, Html, Css, Java</Col>
                     </Row>
                 </CardText>
-                <Button className="card-button">See All Personal Details</Button>
+                <Button className="card-button">See All Academics</Button>
             </CardBody>
         </Card>
     )
@@ -157,8 +168,8 @@ function RenderProjectDetails() {
                     <Col>{user.title}</Col>
                 </Row>
                 <Row className="row-padding">
-                <Col lg={10}>{user.from}-{user.to}</Col>
-                <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
+                    <Col lg={10}>{user.from}-{user.to}</Col>
+                    <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <Row className="row-padding">
                     <Col>Skills Developed: {user.skills}</Col>
@@ -214,10 +225,10 @@ function RenderAttendance() {
         return (
             <div>
                 <Row className="row-padding">
-                    <Col>Semester: {user.sem}</Col>    
+                    <Col>Semester: {user.sem}</Col>
                 </Row>
                 <Row className="row-padding">
-                <Col lg={10}>Average: {user.avg}</Col>
+                    <Col lg={10}>Average: {user.avg}</Col>
                     <Button lg={2} className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
@@ -308,7 +319,7 @@ function RenderStudentPublications() {
                     <Col>Academic Year: {user.year}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col>ISBN/E-ISSN: {user.isbn}</Col>    
+                    <Col>ISBN/E-ISSN: {user.isbn}</Col>
                 </Row>
                 <Row className="row-padding">
                     <Col lg={5}>Paper Type: {user.papertype}</Col>
@@ -383,14 +394,16 @@ class Home extends Component {
                 <Sidebar />
                 <div className="home-page">
                     <div className="photo-box">
-                        <img src="C:\Users\devansh_2\Desktop\StudentManagementClient-master\public\download (1).jpg" alt="Profile" id="photo" />
+                        <img src="" alt="Profile" id="photo" />
                     </div>
                     <div className="">
                         <Button id="change-photo-button">Change Photo</Button>
                     </div>
                     <br />
                     <Row>
-                        <Col><RenderPersonalDetails /></Col>
+                        <Col><RenderPersonalDetails item={this.props.personaldetail}
+                            isLoading={this.props.isLoading}
+                            isError={this.props.isError} /></Col>
                         <Col><RenderAcademics /></Col>
                     </Row>
                     <br /><br />
@@ -471,7 +484,7 @@ class Home extends Component {
                         <br />
                         <br />
                         <Row>
-                            <Col lg={7}><RenderOnlineCertifications/></Col>
+                            <Col lg={7}><RenderOnlineCertifications /></Col>
                             <Col lg={5}><RenderAttendance /></Col>
                         </Row>
                     </div>

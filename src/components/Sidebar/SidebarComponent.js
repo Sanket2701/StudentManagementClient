@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, NavItem, NavbarBrand, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import './SidebarComponent.css';
-import history from 'C:/Users/acer/Documents/StudentManagementClient/src/redux/history';
+import history from '../../redux/history';
 
 class Sidebar extends Component {
 
@@ -14,6 +14,7 @@ class Sidebar extends Component {
     handleLogout() {
         localStorage.removeItem('username');
         localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         history.push('/login');
         window.location.reload(true);
     }
