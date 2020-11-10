@@ -15,11 +15,15 @@ import { AttendanceModel } from './formModel/attendanceModel';
 import { ProjectDetailsModel } from './formModel/projectDetailsModel';
 import { OnlineCertificationModel } from './formModel/onlineCertificationsModel';
 import { PersonalDetailsReducer } from './Reducers/personalDetailsReducer';
+import { InternshipsReducer } from './Reducers/internshipsReducer';
+import { AcademicsReducer } from './Reducers/academicsReducer';
 
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             personaldetails: PersonalDetailsReducer,
+            academics: AcademicsReducer,
+            internships: InternshipsReducer,
             ...createForms({
                 userRegister: RegisterModel,
                 userLogin: LoginModel,

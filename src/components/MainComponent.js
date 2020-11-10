@@ -13,17 +13,21 @@ import AttendanceComponent from './Attendance/AttendanceComponent';
 import Settings from './Settings/SettingsComponent';
 import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
 import {
-    postRegister, postLogin, postInternships, postAcademics,
+    postRegister, postLogin,
     postStudentBodyDetails, postStudentProjectCompetition, postStudentPublication, postExtraCurriculars,
     postAttendance, postProjectDetails, postOnlineCertifications
 } from '../redux/actionCreators';
 import { postPersonalDetails, getPersonalDetails } from '../redux/ActionCreators/personalDetailsActionCreators';
+import { postAcademics, getAcademics } from '../redux/ActionCreators/academicsActionCreators';
+import { postInternships, getInternships } from '../redux/ActionCreators/internshipsActionCreators';
 import { connect } from 'react-redux';
 import history from '../redux/history';
 
 const mapStateToProps = state => {
     return {
-        personaldetails: state.personaldetails
+        personaldetails: state.personaldetails,
+        internships: state.internships,
+        academics: state.academics
     }
 }
 
@@ -74,13 +78,17 @@ const mapDispatchToProps = (dispatch) => ({
         postOnlineCertifications(semester, platform, domain, title, from, to,
             certificateUrl)
     ),
-    getPersonalDetails: () => { dispatch(getPersonalDetails()) }
+    getPersonalDetails: () => { dispatch(getPersonalDetails()) },
+    getInternships: () => { dispatch(getInternships()) },
+    getAcademics: () => { dispatch(getAcademics()) }
 });
 
 class Main extends Component {
 
     componentDidMount() {
         this.props.getPersonalDetails();
+        this.props.getInternships();
+        this.props.getAcademics();
     }
 
     render() {
@@ -89,8 +97,14 @@ class Main extends Component {
             return (
                 <div>
                     <Home personaldetail={this.props.personaldetails.allPersonalDetails}
-                        isLoading={this.props.personaldetails.isLoading}
-                        isError={this.props.personaldetails.error} />
+                        isPersonalDetailLoading={this.props.personaldetails.isLoading}
+                        isPersonalDetailError={this.props.personaldetails.error}
+                        academic={this.props.academics.academics}
+                        isAcademicLoading={this.props.academics.isLoading}
+                        isAcademicError={this.props.academics.error}
+                        internship={this.props.internships.internships}
+                        isInternshipLoading={this.props.internships.isLoading}
+                        isInternshipError={this.props.internships.error} />
                 </div>
             );
         }

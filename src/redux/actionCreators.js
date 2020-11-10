@@ -43,69 +43,13 @@ export const postLogin = (email, password) => async (dispatch) => {
             localStorage.setItem('token', res.data.token);
             console.log(localStorage.getItem('token'));
             localStorage.setItem('username', res.data.data.user.name);
-            history.push('/personaldetails');
+            history.push('/home');
         }
     } catch (err) {
         console.log('error', err.response.data.message);
         alert(err.response.data.message);
     }
 }
-export const postAcademics = (nameOfSchool, sscAggregate, nameOfJuniorCollege,
-    hscAggregate, department, currentSemester, domainOfInterest, programmingLanguages) => async (dispatch) => {
-        try {
-            const res = await axios({
-                method: 'POST',
-                url: 'http://127.0.0.1:5000/api/v1/academics',
-                data: {
-                    token: localStorage.getItem('token'),
-                    nameOfSchool: nameOfSchool,
-                    sscAggregate: sscAggregate,
-                    nameOfJuniorCollege: nameOfJuniorCollege,
-                    hscAggregate: hscAggregate,
-                    department: department,
-                    currentSemester: currentSemester,
-                    domainOfInterest: domainOfInterest,
-                    programmingLanguages: programmingLanguages,
-                },
-            });
-            if (res.data.status === 'success') {
-                console.log(res.data.data)
-                alert("Success");
-                dispatch(actions.reset('userAcademics'));
-            }
-        } catch (err) {
-            console.log('error', err.response.data.message);
-            alert(err.response.data.message);
-            dispatch(actions.reset('userAcademics'));
-        }
-    }
-export const postInternships = (semester, companyName, duration, domain, stipend, certificateUrl) => async (dispatch) => {
-    try {
-        const res = await axios({
-            method: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/internship',
-            data: {
-                token: localStorage.getItem('token'),
-                semester: semester,
-                companyName: companyName,
-                duration: duration,
-                domain: domain,
-                stipend: stipend,
-                certificateUrl: certificateUrl
-            },
-        });
-        if (res.data.status === 'success') {
-            console.log(res.data.data)
-            alert("Internship posted");
-            dispatch(actions.reset('userInternships'));
-        }
-    } catch (err) {
-        console.log('error', err.response.data.message);
-        alert(err.response.data.message);
-        dispatch(actions.reset('userInternships'));
-    }
-}
-
 export const postStudentBodyDetails = (year, name, post) => async (dispatch) => {
     try {
         const res = await axios({

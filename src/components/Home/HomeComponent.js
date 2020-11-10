@@ -6,14 +6,6 @@ import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from '../LoadingComponent';
 
 const required = (val) => val && val.length;
-const internshipData = [
-    { company: "RBT Enterprises", duration: "3 months" },
-    { company: "RBT Enterprises", duration: "3 months" },
-    { company: "RBT Enterprises", duration: "3 months" },
-    { company: "RBT Enterprises", duration: "3 months" },
-    { company: "RBT Enterprises", duration: "3 months" },
-
-];
 const projectDetailsData = [
     { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
     { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
@@ -68,7 +60,7 @@ function RenderPersonalDetails({ item, isLoading, isError }) {
         );
     }
     else return (
-        <Card id="personal-details-card">
+        <Card id="personal-details-card" key={item._id}>
             <CardBody>
                 <CardTitle className="card-title">Personal Details</CardTitle>
                 <CardText>
@@ -88,18 +80,28 @@ function RenderPersonalDetails({ item, isLoading, isError }) {
     )
 }
 
-function RenderAcademics() {
-    return (
-        <Card id="academics-card">
+function RenderAcademics({ item, isLoading, isError }) {
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
+        <Card id="academics-card" key={item._id}>
             <CardBody>
                 <CardTitle className="card-title">Academics</CardTitle>
                 <CardText>
                     <Row>
-                        <Col lg={4}>Semester: 5</Col>
-                        <Col>Computer Engineering</Col>
+                        <Col lg={4}>Semester: {item.currentSemester}</Col>
+                        <Col>Department: {item.department}</Col>
                     </Row>
                     <Row>
-                        <Col>Programming Skills: Python, Javasript, Html, Css, Java</Col>
+                        <Col>Programming Skills: {item.programmingLanguages}</Col>
                     </Row>
                 </CardText>
                 <Button className="card-button">See All Academics</Button>
@@ -135,20 +137,30 @@ function RenderPointers() {
     );
 }
 
-function RenderInternships() {
-    const internshipList = internshipData.map((user) => {
+function RenderInternships({ item, isLoading, isError }) {
+    const internshipList = item.map((i) => {
         return (
             <div>
-                <Row className="row-padding">
-                    <Col lg={6}>{user.company}</Col>
-                    <Col lg={4}>{user.duration}</Col>
+                <Row className="row-padding" key={i._key}>
+                    <Col lg={6}>{i.companyName}</Col>
+                    <Col lg={4}>{i.duration}</Col>
                     <Button lg={2} className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="internship-card">
             <CardBody>
                 <CardTitle className="card-title">Internships</CardTitle>
@@ -402,9 +414,11 @@ class Home extends Component {
                     <br />
                     <Row>
                         <Col><RenderPersonalDetails item={this.props.personaldetail}
-                            isLoading={this.props.isLoading}
-                            isError={this.props.isError} /></Col>
-                        <Col><RenderAcademics /></Col>
+                            isLoading={this.props.isPersonalDetailLoading}
+                            isError={this.props.isPersonalDetailError} /></Col>
+                        <Col><RenderAcademics item={this.props.academic}
+                            isLoading={this.props.isAcademicLoading}
+                            isError={this.props.isAcademicError} /></Col>
                     </Row>
                     <br /><br />
                     <div className="progress-label-and-button">
@@ -478,7 +492,9 @@ class Home extends Component {
                     <br />
                     <div>
                         <Row>
-                            <Col><RenderInternships /></Col>
+                            <Col><RenderInternships item={this.props.internship}
+                                isLoading={this.props.isInternshipLoading}
+                                isError={this.props.isInternshipError} /></Col>
                             <Col><RenderProjectDetails /></Col>
                         </Row>
                         <br />
