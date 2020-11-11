@@ -17,6 +17,12 @@ import { OnlineCertificationModel } from './formModel/onlineCertificationsModel'
 import { PersonalDetailsReducer } from './Reducers/personalDetailsReducer';
 import { InternshipsReducer } from './Reducers/internshipsReducer';
 import { AcademicsReducer } from './Reducers/academicsReducer';
+import { ProjectDetailsReducer } from './Reducers/projectDetailsReducer';
+import { OnlineCertificationsReducer } from './Reducers/onlineCertificationsReducer';
+import { StudentBodyDetailsReducer } from './Reducers/studentBodyDetailsReducer';
+import { StudentProjectCompetitionReducer } from './Reducers/studentProjectCompetitionReducer';
+import { StudentPublicationReducer } from './Reducers/studentPublicationReducer';
+import { ExtraCurricularsReducer } from './Reducers/extraCurricularsReducer';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -24,6 +30,12 @@ export const ConfigureStore = () => {
             personaldetails: PersonalDetailsReducer,
             academics: AcademicsReducer,
             internships: InternshipsReducer,
+            projectDetails: ProjectDetailsReducer,
+            onlineCertifications: OnlineCertificationsReducer,
+            studentBodyDetails: StudentBodyDetailsReducer,
+            studentProjectCompetition: StudentProjectCompetitionReducer,
+            studentPublication: StudentPublicationReducer,
+            extraCurriculars: ExtraCurricularsReducer,
             ...createForms({
                 userRegister: RegisterModel,
                 userLogin: LoginModel,

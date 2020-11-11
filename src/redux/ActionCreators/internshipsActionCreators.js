@@ -62,4 +62,4 @@ export const internshipsFailed = (errmessage) => ({
 export const addInternships = (internships) => ({
     type: ActionTypes.GET_INTERNSHIPS,
     payload: internships
-})
+});

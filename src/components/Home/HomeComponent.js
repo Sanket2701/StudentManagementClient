@@ -6,19 +6,6 @@ import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from '../LoadingComponent';
 
 const required = (val) => val && val.length;
-const projectDetailsData = [
-    { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
-    { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
-    { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
-    { title: "Title of Project", from: "dd/mm/yyyy", to: "dd/mm/yyyy", skills: "Javascript, html, css" },
-];
-const onlineCertificationsData = [
-    { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
-    { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
-    { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
-    { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
-    { title: "Title of course", from: "dd/mm/yyyy", to: "dd/mm/yyyy", platform: "Coursera, udemy, nptel" },
-]
 const attendanceData = [
     { sem: 1, avg: "100%" },
     { sem: 2, avg: "100%" },
@@ -27,27 +14,7 @@ const attendanceData = [
     { sem: 5, avg: "100%" },
     { sem: 6, avg: "100%" },
 ]
-const studentBodyDetailsData = [
-    { year: "2020-2021", committee: "CSI", position: "chairperson" },
-    { year: "2021-2022", committee: "ACS", position: "chairperson" },
-]
-const projectCompetitionDetailsData = [
-    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
-    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
-    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
-    { year: "2021-2022", competition: "Deep Blue", title: "ASST", role: "web developer" },
 
-]
-const studentPublicationsData = [
-    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
-    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
-    { year: "2021-2022", paperlevel: "international", title: "technical paper of the year", papertype: "journal", isbn: "sihydVils" },
-]
-const extraCurricularsData = [
-    { semester: 4, activity: "table tennis", level: "national" },
-    { semester: 4, activity: "table tennis", level: "national" },
-    { semester: 4, activity: "table tennis", level: "national" },
-]
 function RenderPersonalDetails({ item, isLoading, isError }) {
     if (isLoading) {
         return (
@@ -172,25 +139,35 @@ function RenderInternships({ item, isLoading, isError }) {
     );
 }
 
-function RenderProjectDetails() {
-    const projectDetailsList = projectDetailsData.map((user) => {
+function RenderProjectDetails({ item, isLoading, isError }) {
+    const projectDetailsList = item.map((i) => {
         return (
-            <div>
+            <div key={i._id}>
                 <Row className="row-padding">
-                    <Col>{user.title}</Col>
+                    <Col>Title: {i.title}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>{user.from}-{user.to}</Col>
+                    <Col lg={10}>{i.from}-{i.to}</Col>
                     <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <Row className="row-padding">
-                    <Col>Skills Developed: {user.skills}</Col>
+                    <Col>Skills Developed: {i.skillsDeveloped}</Col>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="project-details-card">
             <CardBody className="card-body">
                 <CardTitle className="card-title">Project Details</CardTitle>
@@ -202,25 +179,35 @@ function RenderProjectDetails() {
     );
 }
 
-function RenderOnlineCertifications() {
-    const onlineCertificationsList = onlineCertificationsData.map((user) => {
+function RenderOnlineCertifications({ item, isLoading, isError }) {
+    const onlineCertificationsList = item.map((i) => {
         return (
-            <div>
+            <div key={i._id}>
                 <Row className="row-padding">
-                    <Col>{user.title}</Col>
+                    <Col>Title: {i.title}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>Platform: {user.platform}</Col>
+                    <Col lg={10}>Platform: {i.platform}</Col>
                     <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <Row className="row-padding">
-                    <Col>{user.from}-{user.to}</Col>
+                    <Col>{i.from}-{i.to}</Col>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="online-certifications-card">
             <CardBody className="">
                 <CardTitle className="card-title">Online Certifications</CardTitle>
@@ -259,25 +246,35 @@ function RenderAttendance() {
     );
 }
 
-function RenderStudentBodyDetails() {
-    const studentBodyDetailsList = studentBodyDetailsData.map((user) => {
+function RenderStudentBodyDetails({ item, isLoading, isError }) {
+    const studentBodyDetailsList = item.map((i) => {
         return (
-            <div>
+            <div key={i._id}>
                 <Row className="row-padding">
-                    <Col>Academic Year: {user.year}</Col>
+                    <Col>Academic Year: {i.year}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col>Committee: {user.committee}</Col>
+                    <Col>Committee: {i.name}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>Position: {user.position}</Col>
+                    <Col lg={10}>Position: {i.post}</Col>
                     <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="student-body-details-card">
             <CardBody className="">
                 <CardTitle className="card-title">Student Body Details</CardTitle>
@@ -289,28 +286,38 @@ function RenderStudentBodyDetails() {
     );
 }
 
-function RenderProjectCompetitionDetails() {
-    const projectCompetitionDetailsList = projectCompetitionDetailsData.map((user) => {
+function RenderProjectCompetitionDetails({ item, isLoading, isError }) {
+    const projectCompetitionDetailsList = item.map((i) => {
         return (
-            <div>
+            <div key={i._id}>
                 <Row className="row-padding">
-                    <Col>Academic Year: {user.year}</Col>
+                    <Col>Academic Year: {i.year}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col>Competition Name: {user.competition}</Col>
+                    <Col>Competition Name: {i.competitionName}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col>Title: {user.title}</Col>
+                    <Col>Title: {i.projectTitle}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>Role: {user.role}</Col>
+                    <Col lg={10}>Role: {i.role}</Col>
                     <Button className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="project-competition-details-card">
             <CardBody className="">
                 <CardTitle className="card-title">Project Competition Details</CardTitle>
@@ -322,27 +329,37 @@ function RenderProjectCompetitionDetails() {
     );
 }
 
-function RenderStudentPublications() {
-    const studentPublicationsList = studentPublicationsData.map((user) => {
+function RenderStudentPublications({ item, isLoading, isError }) {
+    const studentPublicationsList = item.map((i) => {
         return (
-            <div>
+            <div key={i._id}>
                 <Row className="row-padding">
-                    <Col>Title: {user.title}</Col>
-                    <Col>Academic Year: {user.year}</Col>
+                    <Col>Title: {i.title}</Col>
+                    <Col>Academic Year: {i.year}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col>ISBN/E-ISSN: {user.isbn}</Col>
+                    <Col>ISBN/E-ISSN: {i.ISBN}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={5}>Paper Type: {user.papertype}</Col>
-                    <Col lg={5}>Paper Level: {user.paperlevel}</Col>
+                    <Col lg={5}>Paper Type: {i.paperType}</Col>
+                    <Col lg={5}>Paper Level: {i.paperLevel}</Col>
                     <Button lg={2} className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="student-publications-card">
             <CardBody className="">
                 <CardTitle className="card-title">Student Publications</CardTitle>
@@ -354,23 +371,33 @@ function RenderStudentPublications() {
     );
 }
 
-function RenderExtraCurriculars() {
-    const extraCurricularsList = extraCurricularsData.map((user) => {
+function RenderExtraCurriculars({ item, isLoading, isError }) {
+    const extraCurricularsList = item.map((i) => {
         return (
             <div>
                 <Row className="row-padding">
-                    <Col lg={5}>Semester: {user.semester}</Col>
-                    <Col lg={5}>Activity: {user.activity}</Col>
+                    <Col lg={5}>Semester: {i.semester}</Col>
+                    <Col lg={5}>Activity: {i.activity}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>Level: {user.level}</Col>
+                    <Col lg={10}>Level of Activity: {i.levelActivity}</Col>
                     <Button lg={2} className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="extra-curriculars-card">
             <CardBody className="">
                 <CardTitle className="card-title">Extra Curriculars</CardTitle>
@@ -495,12 +522,16 @@ class Home extends Component {
                             <Col><RenderInternships item={this.props.internship}
                                 isLoading={this.props.isInternshipLoading}
                                 isError={this.props.isInternshipError} /></Col>
-                            <Col><RenderProjectDetails /></Col>
+                            <Col><RenderProjectDetails item={this.props.projectdetail}
+                                isLoading={this.props.isProjectDetailLoading}
+                                isError={this.props.isProjectDetailError} /></Col>
                         </Row>
                         <br />
                         <br />
                         <Row>
-                            <Col lg={7}><RenderOnlineCertifications /></Col>
+                            <Col lg={7}><RenderOnlineCertifications item={this.props.onlinecertification}
+                                isLoading={this.props.isOnlineCertificationLoading}
+                                isError={this.props.isOnlineCertificationError} /></Col>
                             <Col lg={5}><RenderAttendance /></Col>
                         </Row>
                     </div>
@@ -510,15 +541,23 @@ class Home extends Component {
                         <h1 className="co-curriculars-title">Co-Curriculars</h1>
                         <br />
                         <Row>
-                            <Col><RenderStudentBodyDetails /></Col>
-                            <Col><RenderProjectCompetitionDetails /></Col>
+                            <Col><RenderStudentBodyDetails item={this.props.studentBodyDetail}
+                                isLoading={this.props.isStudentBodyDetailLoading}
+                                isError={this.props.isStudentBodyDetailError} /></Col>
+                            <Col><RenderProjectCompetitionDetails item={this.props.projectCompetition}
+                                isLoading={this.props.isStudentProjectCompetitionLoading}
+                                isError={this.props.isStudentProjectCompetitionError} /></Col>
                         </Row>
                         <br /><br />
-                        <RenderStudentPublications />
+                        <RenderStudentPublications item={this.props.publication}
+                            isLoading={this.props.isStudentPublicationLoading}
+                            isError={this.props.isStudentPublicationError} />
                     </div>
                     <br />
                     <br />
-                    <RenderExtraCurriculars />
+                    <RenderExtraCurriculars item={this.props.extraCurricular}
+                        isLoading={this.props.isExtraCurricularsLoading}
+                        isError={this.props.isExtraCurricularsError} />
                 </div>
             </div>
         );
