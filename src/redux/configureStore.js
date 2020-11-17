@@ -23,6 +23,7 @@ import { StudentBodyDetailsReducer } from './Reducers/studentBodyDetailsReducer'
 import { StudentProjectCompetitionReducer } from './Reducers/studentProjectCompetitionReducer';
 import { StudentPublicationReducer } from './Reducers/studentPublicationReducer';
 import { ExtraCurricularsReducer } from './Reducers/extraCurricularsReducer';
+import { AttendanceReducer } from './Reducers/attendanceReducer';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -36,6 +37,7 @@ export const ConfigureStore = () => {
             studentProjectCompetition: StudentProjectCompetitionReducer,
             studentPublication: StudentPublicationReducer,
             extraCurriculars: ExtraCurricularsReducer,
+            attendance: AttendanceReducer,
             ...createForms({
                 userRegister: RegisterModel,
                 userLogin: LoginModel,

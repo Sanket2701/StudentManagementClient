@@ -10,8 +10,10 @@ export const postStudentPublication = (title, year, author, dateOfIssue, volume,
             const res = await axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentPublication',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 data: {
-                    token: localStorage.getItem('token'),
                     title: title,
                     year: year,
                     author: author,

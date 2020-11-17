@@ -9,8 +9,10 @@ export const postStudentBodyDetails = (year, name, post) => async (dispatch) => 
         const res = await axios({
             method: 'POST',
             url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentBody',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
             data: {
-                token: localStorage.getItem('token'),
                 year: year,
                 name: name,
                 post: post

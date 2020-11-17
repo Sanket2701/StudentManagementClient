@@ -10,8 +10,10 @@ export const postProjectDetails = (semester, title, from, to, role, mentor, fund
             const res = await axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/project',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 data: {
-                    token: localStorage.getItem('token'),
                     semester: semester,
                     title: title,
                     from: from,

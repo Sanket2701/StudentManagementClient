@@ -10,8 +10,10 @@ export const postExtraCurriculars = (semester, activity, levelActivity, position
             const res = await axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/extraCurriculars',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 data: {
-                    token: localStorage.getItem('token'),
                     semester: semester,
                     activity: activity,
                     levelActivity: levelActivity,

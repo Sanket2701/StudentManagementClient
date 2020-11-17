@@ -6,15 +6,6 @@ import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from '../LoadingComponent';
 
 const required = (val) => val && val.length;
-const attendanceData = [
-    { sem: 1, avg: "100%" },
-    { sem: 2, avg: "100%" },
-    { sem: 3, avg: "100%" },
-    { sem: 4, avg: "100%" },
-    { sem: 5, avg: "100%" },
-    { sem: 6, avg: "100%" },
-]
-
 function RenderPersonalDetails({ item, isLoading, isError }) {
     if (isLoading) {
         return (
@@ -219,22 +210,32 @@ function RenderOnlineCertifications({ item, isLoading, isError }) {
     );
 }
 
-function RenderAttendance() {
-    const attendanceList = attendanceData.map((user) => {
+function RenderAttendance({ item, isLoading, isError }) {
+    const attendanceList = item.map((i) => {
         return (
             <div>
                 <Row className="row-padding">
-                    <Col>Semester: {user.sem}</Col>
+                    <Col>Semester: {i.semester}</Col>
                 </Row>
                 <Row className="row-padding">
-                    <Col lg={10}>Average: {user.avg}</Col>
+                    <Col lg={10}>Average: {i.theoryAttendance}</Col>
                     <Button lg={2} className="arrow-button"><i class="fa fa-arrow-circle-right fa-lg"></i></Button>
                 </Row>
                 <hr />
             </div>
         );
     });
-    return (
+    if (isLoading) {
+        return (
+            <Loading />
+        );
+    }
+    else if (isError) {
+        return (
+            <h4>{isError}</h4>
+        );
+    }
+    else return (
         <Card id="attendance-card">
             <CardBody className="">
                 <CardTitle className="card-title">Attendance</CardTitle>
@@ -532,7 +533,9 @@ class Home extends Component {
                             <Col lg={7}><RenderOnlineCertifications item={this.props.onlinecertification}
                                 isLoading={this.props.isOnlineCertificationLoading}
                                 isError={this.props.isOnlineCertificationError} /></Col>
-                            <Col lg={5}><RenderAttendance /></Col>
+                            <Col lg={5}><RenderAttendance item={this.props.studentAttendance}
+                                isLoading={this.props.isAttendanceLoading}
+                                isError={this.props.isAttendanceError} /></Col>
                         </Row>
                     </div>
                     <br />

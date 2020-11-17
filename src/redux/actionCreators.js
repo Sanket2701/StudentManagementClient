@@ -50,27 +50,26 @@ export const postLogin = (email, password) => async (dispatch) => {
         alert(err.response.data.message);
     }
 }
-export const postAttendance = (semester, tAttendance, praticalAttendance) =>
-    async (dispatch) => {
-        try {
-            const res = await axios({
-                method: 'POST',
-                url: 'http://127.0.0.1:5000/api/v1/users/attendance',
-                data: {
-                    token: localStorage.getItem('token'),
-                    semester: semester,
-                    theoryAttendance: tAttendance,
-                    praticalAttendance: praticalAttendance
-                },
-            });
-            if (res.data.status === 'success') {
-                console.log(res.data.data)
-                alert("Student Attendance posted");
-                dispatch(actions.reset('userAttendance'));
-            }
-        } catch (err) {
-            console.log('error', err.response.data.message);
-            alert(err.response.data.message);
-            dispatch(actions.reset('userAttendance'));
-        }
-    }
+// export const postPointers = (semester, gpa, certificateUrl) => async (dispatch) => {
+//     try {
+//         const res = await axios({
+//             method: 'POST',
+//             url: 'http://127.0.0.1:5000/api/v1/users/attendance',
+//             data: {
+//                 token: localStorage.getItem('token'),
+//                 semester: semester,
+//                 theoryAttendance: tAttendance,
+//                 praticalAttendance: praticalAttendance
+//             },
+//         });
+//         if (res.data.status === 'success') {
+//             console.log(res.data.data)
+//             alert("Student Attendance posted");
+//             dispatch(actions.reset('userAttendance'));
+//         }
+//     } catch (err) {
+//         console.log('error', err.response.data.message);
+//         alert(err.response.data.message);
+//         dispatch(actions.reset('userAttendance'));
+//     }
+// }

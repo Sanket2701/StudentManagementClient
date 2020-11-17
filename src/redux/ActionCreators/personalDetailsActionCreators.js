@@ -10,11 +10,10 @@ export const postPersonalDetails = (firstname, middlename, lastname, collegeId,
             const res = await axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/personaldetails',
-                // headers: {
-                //     'Authorization': `Basic ${access_token}`
-                // },
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 data: {
-                    token: localStorage.getItem('token'),
                     firstname: firstname,
                     middlename: middlename,
                     lastname: lastname,

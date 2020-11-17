@@ -12,7 +12,7 @@ import CoCurriculars from './Co-curriculars/Co-curricularsComponent';
 import AttendanceComponent from './Attendance/AttendanceComponent';
 import Settings from './Settings/SettingsComponent';
 import ExtraCurriculars from './Extra-Curriculars/Extra-curricularsComponent';
-import { postRegister, postLogin, postAttendance } from '../redux/actionCreators';
+import { postRegister, postLogin } from '../redux/actionCreators';
 import { postPersonalDetails, getPersonalDetails } from '../redux/ActionCreators/personalDetailsActionCreators';
 import { postAcademics, getAcademics } from '../redux/ActionCreators/academicsActionCreators';
 import { postInternships, getInternships } from '../redux/ActionCreators/internshipsActionCreators';
@@ -22,6 +22,7 @@ import { postStudentBodyDetails, getStudentBodyDetails } from '../redux/ActionCr
 import { postStudentProjectCompetition, getStudentProjectCompetition } from '../redux/ActionCreators/studentProjectCompetitionActionCreators';
 import { postStudentPublication, getStudentPublication } from '../redux/ActionCreators/studentPublicationActionCreators';
 import { postExtraCurriculars, getExtraCurriculars } from '../redux/ActionCreators/extraCurricularsActionCreators';
+import { postAttendance, getAttendance } from '../redux/ActionCreators/attendanceActionCreators';
 import { connect } from 'react-redux';
 import history from '../redux/history';
 
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
         studentBodyDetails: state.studentBodyDetails,
         studentProjectCompetition: state.studentProjectCompetition,
         studentPublication: state.studentPublication,
-        extraCurriculars: state.extraCurriculars
+        extraCurriculars: state.extraCurriculars,
+        attendance: state.attendance
     }
 }
 
@@ -94,7 +96,8 @@ const mapDispatchToProps = (dispatch) => ({
     getStudentBodyDetails: () => { dispatch(getStudentBodyDetails()) },
     getStudentProjectCompetition: () => { dispatch(getStudentProjectCompetition()) },
     getStudentPublication: () => { dispatch(getStudentPublication()) },
-    getExtraCurriculars: () => { dispatch(getExtraCurriculars()) }
+    getExtraCurriculars: () => { dispatch(getExtraCurriculars()) },
+    getAttendance: () => { dispatch(getAttendance()) }
 });
 
 class Main extends Component {
@@ -109,6 +112,7 @@ class Main extends Component {
         this.props.getStudentProjectCompetition();
         this.props.getStudentPublication();
         this.props.getExtraCurriculars();
+        this.props.getAttendance();
     }
 
     render() {
@@ -142,7 +146,10 @@ class Main extends Component {
                         isStudentPublicationError={this.props.studentPublication.error}
                         extraCurricular={this.props.extraCurriculars.extraCurriculars}
                         isExtraCurricularsLoading={this.props.extraCurriculars.isLoading}
-                        isExtraCurricularsError={this.props.extraCurriculars.error} />
+                        isExtraCurricularsError={this.props.extraCurriculars.error}
+                        studentAttendance={this.props.attendance.attendance}
+                        isAttendanceLoading={this.props.attendance.isLoading}
+                        isAttendanceError={this.props.attendance.error} />
                 </div>
             );
         }

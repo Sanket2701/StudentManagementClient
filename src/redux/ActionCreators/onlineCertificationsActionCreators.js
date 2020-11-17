@@ -10,8 +10,10 @@ export const postOnlineCertifications = (semester, platform, domain, title, from
             const res = await axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:5000/api/v1/onlineCertification',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 data: {
-                    token: localStorage.getItem('token'),
                     sem: semester,
                     platform: platform,
                     domain: domain,

@@ -9,8 +9,10 @@ export const postStudentProjectCompetition = (year, competitionName, projectTitl
         const res = await axios({
             method: 'POST',
             url: 'http://127.0.0.1:5000/api/v1/coCurriculars/studentProject',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
             data: {
-                token: localStorage.getItem('token'),
                 year: year,
                 competitionName: competitionName,
                 projectTitle: projectTitle,
