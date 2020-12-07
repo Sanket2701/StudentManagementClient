@@ -10,14 +10,14 @@ const minLength = (len) => (val) => !val || val.length >= len;
 const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[s][o][m][a][i][y][a]+\.[e][d][u]$/i.test(val);
 
-class Login extends Component {
+class ForgotPasswordComponent extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleForgotPassword = this.handleForgotPassword.bind(this);
   }
 
-  handleLogin(values) {
-    this.props.postLogin(values.email, values.password);
+  handleForgotPassword(values) {
+    this.props.forgotPassword(values.email);
   }
 
   render() {
@@ -36,11 +36,10 @@ class Login extends Component {
           <div id="login-info-container">
             <div className="" id="login-middle-container"></div>
             <div className="" id="login-right-container"></div>
-            <div id="login-text">Student Login</div>
+            <div id="login-text">Forgot Password</div>
             <div id="form">
               <LocalForm
-                model="userLogin"
-                onSubmit={(values) => this.handleLogin(values)}
+                onSubmit={(values) => this.handleForgotPassword(values)}
               >
                 <Row className="form-group">
                   <Col>
@@ -70,49 +69,13 @@ class Login extends Component {
                     />
                   </Col>
                 </Row>
-                <Row className="form-group" id="password-row">
-                  {/* <Label htmlFor="email">Email Id</Label> */}
-                  <Col>
-                    <Control.text
-                      model=".password"
-                      type="password"
-                      id="password"
-                      name="password"
-                      className="form-control"
-                      placeholder="Password"
-                      validators={{
-                        required,
-                        minLength: minLength(8),
-                        maxLength: maxLength(22),
-                      }}
-                    />
-                    <Errors
-                      className="text-danger"
-                      model=".password"
-                      show="touched"
-                      messages={{
-                        required: "*Required",
-                        minLength: "*Must be Greater than 8 charachters",
-                        maxLength: "*Must be 22 charachters or less",
-                      }}
-                    />
-                  </Col>
-                </Row>
                 <Row className="form-group">
                   <Button type="submit" id="login-button">
-                    Login
+                    Send Email
                   </Button>
-                  <Link to="./forgotpassword" id="forgot-link">
-                    Forgot Password?
+                  <Link to="./login" id="forgot-link">
+                    Login?
                   </Link>
-                </Row>
-                <Row className="form-group">
-                  <span>
-                    {" "}
-                    <Link to="/register" id="register-link">
-                      Don't have an account? Register Now
-                    </Link>
-                  </span>
                 </Row>
               </LocalForm>
             </div>
@@ -123,4 +86,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ForgotPasswordComponent;

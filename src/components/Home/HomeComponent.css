@@ -1,224 +1,227 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 body {
-    font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
 }
 .home-page {
-    margin-left: 20%;
-    margin-right: 2%;
+  margin-left: 20%;
+  margin-right: 2%;
 }
 .photo-box {
-    width: 12%;
-    height: 20vh;
-    border: 1px solid black;
-    display: inline-block;
-    margin-top: 2%;
+  width: 12%;
+  height: 20vh;
+  border: 1px solid black;
+  display: inline-block;
+  margin-top: 2%;
 }
 #photo {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 #change-photo-button {
-    background-color: white;
-    color: #B7202E;
-    border: 0px;
-    margin-top: 10px;
+  background-color: white;
+  color: #b7202e;
+  border: 0px;
+  margin-top: 10px;
 }
 #personal-details-card {
-    background-color: rgba(243, 173, 173, 0.39);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
-    height: 35vh;
+  background-color: rgba(243, 173, 173, 0.39);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
+  height: 35vh;
+  overflow-y: scroll;
 }
-.card-button, .card-button:hover {
-    background-color: #B7202E;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+.card-button,
+.card-button:hover {
+  background-color: #b7202e;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 .card-title {
-    font-weight: 600;
-    font-size: 22px;
-    color: #B7202E;
+  font-weight: 600;
+  font-size: 22px;
+  color: #b7202e;
 }
 #academics-card {
-    height: 35vh;
-    background-color: rgba(210, 199, 199, 0.39);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
-    overflow-y: scroll;
+  height: 35vh;
+  background-color: rgba(210, 199, 199, 0.39);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
+  overflow-y: scroll;
 }
 ::-webkit-scrollbar {
-    border-radius: 0px 25px 25px 0px;
-    /* background-color: rgba(210, 199, 199, 0.39); */
+  border-radius: 0px 25px 25px 0px;
+  /* background-color: rgba(210, 199, 199, 0.39); */
 }
 .progress-label-and-button {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 #progress-label {
-    font-size: 22px;
-    font-weight: 700;
-    color: #B7202E;
+  font-size: 22px;
+  font-weight: 700;
+  color: #b7202e;
 }
 #add-gpa-button {
-    font-size: 18px;
-    background-color: #B7202E;
-    color: white;
+  font-size: 18px;
+  background-color: #b7202e;
+  color: white;
 }
 #gpa-section {
-    text-align: center;
+  text-align: center;
 }
 .gpa-box {
-    text-align: center;
-    padding: 1.5%;
-    width: 2%;
-    height: 8vh;
-    border: 1px solid black;
-    margin: 2%;
-    border-radius: 15px;
-    font-weight: bold;
+  text-align: center;
+  padding: 1.5%;
+  width: 2%;
+  height: 8vh;
+  border: 1px solid black;
+  margin: 2%;
+  border-radius: 15px;
+  font-weight: bold;
 }
 #sem-1 {
-    background-color: white;
-    color: #B7202E;
+  background-color: white;
+  color: #b7202e;
 }
 #sem-2 {
-    background-color: rgb(254, 238, 238);
-    color: #B7202E;
+  background-color: rgb(254, 238, 238);
+  color: #b7202e;
 }
 #sem-3 {
-    background-color: #FECFCF;
-    color: #B7202E;
+  background-color: #fecfcf;
+  color: #b7202e;
 }
 #sem-4 {
-    background-color: #F9BFBF;
-    color: #B7202E;
+  background-color: #f9bfbf;
+  color: #b7202e;
 }
 #sem-5 {
-    background-color: #FCAAAA;
-    color: #B7202E;
+  background-color: #fcaaaa;
+  color: #b7202e;
 }
 #sem-6 {
-    background-color: #FD9797;
-    color: #B7202E;
+  background-color: #fd9797;
+  color: #b7202e;
 }
 #sem-7 {
-    background-color: #F86A6A;
-    color: #B7202E;
+  background-color: #f86a6a;
+  color: #b7202e;
 }
 #sem-8 {
-    background-color: #F81717;
-    color: white;
+  background-color: #f81717;
+  color: white;
 }
 .modal-label {
-    color:  #B7202E;
-    font-size: 18px;
+  color: #b7202e;
+  font-size: 18px;
 }
 #submit-gpa {
-    background-color: #B7202E;
-    color: white;
-    border-radius: 15px;
-    margin: 2%;
-    width: 25%;
+  background-color: #b7202e;
+  color: white;
+  border-radius: 15px;
+  margin: 2%;
+  width: 25%;
 }
 .save-row {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .card-body {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 #internship-card {
-    height: 50vh;
-    background-color: rgba(210, 199, 199, 0.39);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: rgba(210, 199, 199, 0.39);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #project-details-card {
-    height: 50vh;
-    background-color: #F9D4E4;
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: #f9d4e4;
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #online-certifications-card {
-    height: 50vh;
-    background-color: rgba(245, 182, 182, 0.62);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: rgba(245, 182, 182, 0.62);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #attendance-card {
-    height: 50vh;
-    background-color: #DFD7D7;
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: #dfd7d7;
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #student-body-details-card {
-    height: 50vh;
-    background-color: rgba(239, 132, 132, 0.48);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: rgba(239, 132, 132, 0.48);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #project-competition-details-card {
-    height: 50vh;
-    background-color: rgba(239, 132, 132, 0.48);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: rgba(239, 132, 132, 0.48);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #student-publications-card {
-    height: 50vh;
-    background-color: rgba(239, 132, 132, 0.48);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
+  height: 50vh;
+  background-color: rgba(239, 132, 132, 0.48);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
 }
 #extra-curriculars-card {
-    height: 50vh;
-    background-color: rgba(249, 193, 240, 0.66);
-    font-size: 22px;
-    color: #B7202E;
-    box-shadow: black 0px 1px 3px;
-    border-radius: 25px;
-    margin-bottom: 20px;
+  height: 50vh;
+  background-color: rgba(249, 193, 240, 0.66);
+  font-size: 22px;
+  color: #b7202e;
+  box-shadow: black 0px 1px 3px;
+  border-radius: 25px;
+  margin-bottom: 20px;
 }
 .cards-body {
-    background-color: white;
-    overflow-y: auto;
-    height: 90%;
+  background-color: white;
+  overflow-y: auto;
+  height: 90%;
 }
 hr {
-    border-top: 2px solid brown;
+  border-top: 2px solid brown;
 }
 .arrow-justify {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 2%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
 }
-.arrow-button, .arrow-button:hover {
-    background-color: white;
-    color: #B7202E;
-    border: 0px;
+.arrow-button,
+.arrow-button:hover {
+  background-color: white;
+  color: #b7202e;
+  border: 0px;
 }
 .co-curriculars-title {
-    color: #B7202E;
+  color: #b7202e;
 }
 .row-padding {
-    padding-left: 2%;
+  padding-left: 2%;
 }

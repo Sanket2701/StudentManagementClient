@@ -1,70 +1,71 @@
 #internship-title {
-    display: flex;
-    justify-content: space-between;
-    color: #B7202E;
-    text-align: left;
-    margin-left: 300px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #b7202e;
+  text-align: left;
+  margin-left: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .plus-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10%;
 }
 .single-internship-form {
-    margin-left: 300px;
-    max-width: 75%;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 15px;
-    box-shadow: black 0px 3px 6px;
-    margin-bottom: 30px;
+  margin-left: 300px;
+  max-width: 75%;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 15px;
+  box-shadow: black 0px 3px 6px;
+  margin-bottom: 30px;
 }
 
 #internship-certificate-file {
-    max-width: 20%;
+  max-width: 20%;
 }
 
-.photo-space, #internship-certificate-file {
-    display: flex;
-    justify-content: flex-end;
-    max-width: 40%;
-    float: right;
+.photo-space,
+#internship-certificate-file {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 40%;
+  float: right;
 }
 .internship-form-label {
-    text-align: left;
-    color: #B7202E;
-    padding: 15px;
-    font-weight: 600;
-    font-size: 18px;
+  text-align: left;
+  color: #b7202e;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 18px;
 }
 .internship-form-fields {
-    padding: 8px;
-    max-width: 40%;
-    height: 40px;
+  padding: 8px;
+  max-width: 40%;
+  height: 40px;
 }
 .internship-certificate {
-    border: 1px solid black;
-    width: 150px;
-    height: 150px;
-    float: right;
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  float: right;
 }
 .submit-button-internship {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 #internship-save-button {
-    background-color:#B7202E;
-    color: white;
-    width: 150px;
-    height: 40px;
-    margin: 15px;
+  background-color: #b7202e;
+  color: white;
+  width: 150px;
+  height: 40px;
+  margin: 15px;
 }
 #internship-delete-button {
-    background-color:grey;
-    color: white;
-    width: 150px;
-    height: 40px;
-    margin: 15px;
+  background-color: grey;
+  color: white;
+  width: 150px;
+  height: 40px;
+  margin: 15px;
 }

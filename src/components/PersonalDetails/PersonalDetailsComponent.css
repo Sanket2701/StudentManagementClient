@@ -1,42 +1,50 @@
 #title {
-    color: #B7202E;
-    text-align: left;
-    margin-left: 300px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  color: #b7202e;
+  text-align: left;
+  margin-left: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #personal-details-form {
-    margin-left: 300px;
-    max-width: 70%;
+  margin-left: 300px;
+  max-width: 70%;
 }
 .image {
-    margin-left: 15px;
-    border: 1px solid black;
-    width: 150px;
-    height: 150px;
+  margin-left: 15px;
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
 }
 .personal-details-form-fields {
-    max-width: 100%;
-    height: 40px;
+  max-width: 100%;
+  height: 40px;
 }
 .error-message {
-    text-align: left;
+  text-align: left;
 }
 
 .personal-details-form-label {
-    color: #B7202E;
-    padding: 15px;
-    font-weight: 600;
-    font-size: 20px;
+  color: #b7202e;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 20px;
 }
 .submit-button {
-    float: right;
+  float: right;
 }
 #save-button {
-    background-color:#B7202E;
-    color: white;
-    width: 150px;
-    height: 40px;
-    margin: 15px;
+  background-color: #b7202e;
+  color: white;
+  width: 150px;
+  height: 40px;
+  margin: 15px;
+}
+#update-button {
+  background-color: turquoise;
+  color: white;
+  width: 150px;
+  height: 40px;
+  margin: 15px;
+  margin-left: 0px;
 }

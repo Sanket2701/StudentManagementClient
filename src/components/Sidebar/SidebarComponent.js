@@ -13,8 +13,7 @@ class Sidebar extends Component {
 
     handleLogout() {
         localStorage.removeItem('username');
-        localStorage.removeItem('token');
-        sessionStorage.removeItem('token');
+        // localStorage.removeItem('token');
         history.push('/login');
         window.location.reload(true);
     }
