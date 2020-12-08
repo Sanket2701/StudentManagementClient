@@ -165,17 +165,7 @@ class StudentBodyDetailsComponent extends Component {
                 >
                   Delete
                 </Button>
-                <Button
-                  id="update-button"
-                  onClick={(values) => {
-                    this.props.patchStudentBodyDetails(
-                      this.state._id,
-                      values.year,
-                      values.name,
-                      values.post
-                    );
-                  }}
-                >
+                <Button id="update-button" type="submit">
                   Update <i className="fa fa-arrow-right"></i>
                 </Button>
               </Row>

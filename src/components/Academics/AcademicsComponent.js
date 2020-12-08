@@ -312,23 +312,7 @@ class Academics extends Component {
               )}
             </Row>
             {this.state.fromDashBoard ? (
-              <Button
-                type="submit"
-                id="update-button"
-                onClick={(values) => {
-                  this.props.patchAcademics(
-                    this.state._id,
-                    values.nameOfSchool,
-                    values.sscAggregate,
-                    values.nameOfJuniorCollege,
-                    values.hscAggregate,
-                    values.department,
-                    values.currentSemester,
-                    values.domainOfInterest,
-                    values.programmingLanguages
-                  );
-                }}
-              >
+              <Button type="submit" id="update-button">
                 Update <i className="fa fa-arrow-right"></i>
               </Button>
             ) : (

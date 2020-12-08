@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./LoginComponent.css";
 import { Row, Col, Button } from "reactstrap";
 import { LocalForm, Control, Errors } from "react-redux-form";
-import { Link } from "react-router-dom";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;

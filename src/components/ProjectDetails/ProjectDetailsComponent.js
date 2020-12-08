@@ -410,43 +410,25 @@ class ProjectDetails extends Component {
                 </Button>
               )}
             </Row>
+            {this.state.fromDashBoard ? (
+              <Row className="submit-button-project-details">
+                <Button
+                  className="mr10"
+                  id="project-details-delete-button"
+                  onClick={() => {
+                    this.props.deleteProjectDetails(this.state._id);
+                  }}
+                >
+                  Delete
+                </Button>
+                <Button type="submit" id="update-button">
+                  Update <i className="fa fa-arrow-right"></i>
+                </Button>
+              </Row>
+            ) : (
+              <div></div>
+            )}
           </Form>
-          {this.state.fromDashBoard ? (
-            <Row className="submit-button-project-details">
-              <Button
-                className="mr10"
-                id="project-details-delete-button"
-                onClick={() => {
-                  this.props.deleteProjectDetails(this.state._id);
-                }}
-              >
-                Delete
-              </Button>
-              <Button
-                type="submit"
-                id="update-button"
-                onClick={(values) => {
-                  this.props.patchProjectDetails(
-                    this.state._id,
-                    values.semester,
-                    values.title,
-                    values.from,
-                    values.to,
-                    values.role,
-                    values.mentor,
-                    values.funded,
-                    values.investor,
-                    values.skillsDeveloped,
-                    values.certificateUrl
-                  );
-                }}
-              >
-                Update <i className="fa fa-arrow-right"></i>
-              </Button>
-            </Row>
-          ) : (
-            <div></div>
-          )}
         </div>
       </div>
     );

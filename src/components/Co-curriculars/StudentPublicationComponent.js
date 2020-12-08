@@ -440,25 +440,7 @@ class StudentPublicationComponent extends Component {
                 >
                   Delete
                 </Button>
-                <Button
-                  id="update-button"
-                  onClick={(values) => {
-                    this.props.patchStudentPublication(
-                      this.state._id,
-                      values.title,
-                      values.year,
-                      values.author,
-                      values.dateOfIssue,
-                      values.volume,
-                      values.pageNumber,
-                      values.publisher,
-                      values.isbn,
-                      values.paperType,
-                      values.paperLevel,
-                      values.certificateUrl
-                    );
-                  }}
-                >
+                <Button id="update-button" type="submit">
                   Update <i className="fa fa-arrow-right"></i>
                 </Button>
               </Row>

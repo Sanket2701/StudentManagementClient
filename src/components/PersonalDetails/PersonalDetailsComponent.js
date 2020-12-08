@@ -425,31 +425,14 @@ class PersonalDetails extends Component {
                 </Button>
               )}
             </Row>
+            {this.state.fromDashBoard ? (
+              <Button id="update-button" type="submit">
+                Update <i className="fa fa-arrow-right"></i>
+              </Button>
+            ) : (
+              <div></div>
+            )}
           </Form>
-          {this.state.fromDashBoard ? (
-            <Button
-              id="update-button"
-              onClick={(values) => {
-                this.props.patchPersonalDetails(
-                  this.state._id,
-                  values.firstname,
-                  values.middlename,
-                  values.lastname,
-                  values.collegeId,
-                  values.dateOfBirth,
-                  values.contact,
-                  values.contactParent,
-                  values.address,
-                  values.addressPermanent,
-                  "Abd"
-                );
-              }}
-            >
-              Update <i className="fa fa-arrow-right"></i>
-            </Button>
-          ) : (
-            <div></div>
-          )}
         </div>
       </div>
     );

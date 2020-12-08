@@ -217,37 +217,25 @@ class ExtraCurriculars extends Component {
                 </Button>
               )}
             </Row>
+            {this.state.fromDashBoard ? (
+              <Row className="submit-button-extracurricular">
+                <Button
+                  className="mr10"
+                  id="extracurricular-delete-button"
+                  onClick={() => {
+                    this.props.deleteExtraCurriculars(this.state._id);
+                  }}
+                >
+                  Delete
+                </Button>
+                <Button id="update-button" type="submit">
+                  Update <i className="fa fa-arrow-right"></i>
+                </Button>
+              </Row>
+            ) : (
+              <div></div>
+            )}
           </Form>
-          {this.state.fromDashBoard ? (
-            <Row className="submit-button-extracurricular">
-              <Button
-                className="mr10"
-                id="extracurricular-delete-button"
-                onClick={() => {
-                  this.props.deleteExtraCurriculars(this.state._id);
-                }}
-              >
-                Delete
-              </Button>
-              <Button
-                id="update-button"
-                onClick={(values) => {
-                  this.props.patchExtraCurriculars(
-                    this.state._id,
-                    values.semester,
-                    values.activity,
-                    values.levelActivity,
-                    values.position,
-                    values.certificateUrl
-                  );
-                }}
-              >
-                Update <i className="fa fa-arrow-right"></i>
-              </Button>
-            </Row>
-          ) : (
-            <div></div>
-          )}
         </div>
       </div>
     );

@@ -258,20 +258,7 @@ export class StudentProjectCompetitionComponent extends Component {
                 >
                   Delete
                 </Button>
-                <Button
-                  id="update-button"
-                  onClick={(values) => {
-                    this.props.patchStudentProjectCompetition(
-                      this.state._id,
-                      values.year,
-                      values.competitionName,
-                      values.projectTitle,
-                      values.role,
-                      values.position,
-                      values.certificateUrl
-                    );
-                  }}
-                >
+                <Button id="update-button" type="submit">
                   Update <i className="fa fa-arrow-right"></i>
                 </Button>
               </Row>

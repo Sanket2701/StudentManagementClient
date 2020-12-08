@@ -516,38 +516,25 @@ class Internship extends Component {
                 </Button>
               )}
             </Row>
+            {this.state.fromDashBoard ? (
+              <Row className="submit-button-internship">
+                <Button
+                  className="mr10"
+                  id="internship-delete-button"
+                  onClick={() => {
+                    this.props.deleteInternships(this.state._id);
+                  }}
+                >
+                  Delete
+                </Button>
+                <Button id="update-button" type="submit">
+                  Update <i className="fa fa-arrow-right"></i>
+                </Button>
+              </Row>
+            ) : (
+              <div></div>
+            )}
           </Form>
-          {this.state.fromDashBoard ? (
-            <Row className="submit-button-internship">
-              <Button
-                className="mr10"
-                id="internship-delete-button"
-                onClick={() => {
-                  this.props.deleteInternships(this.state._id);
-                }}
-              >
-                Delete
-              </Button>
-              <Button
-                id="update-button"
-                onClick={(values) => {
-                  this.props.patchInternships(
-                    this.state._id,
-                    values.semester,
-                    values.companyName,
-                    values.duration,
-                    values.domain,
-                    values.stipend,
-                    values.certificateUrl
-                  );
-                }}
-              >
-                Update <i className="fa fa-arrow-right"></i>
-              </Button>
-            </Row>
-          ) : (
-            <div></div>
-          )}
         </div>
       </div>
     );
