@@ -1,8 +1,8 @@
 export const StudentProjectCompetitionModel = {
-    year: '',
-    competitionName: '',
-    projectTitle: '',
-    role: '',
-    position: '',
-    certificateUrl: ''
-}
+  studentProjectYear: "",
+  competitionName: "",
+  projectTitle: "",
+  role: "",
+  position: "",
+  studentProjectCertificateUrl: "",
+};

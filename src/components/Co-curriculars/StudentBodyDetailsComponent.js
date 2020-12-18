@@ -20,12 +20,12 @@ class StudentBodyDetailsComponent extends Component {
     this.props.fromStudentBody
       ? this.props.patchStudentBodyDetails(
           this.state._id,
-          values.year,
+          values.studentBodyYear,
           values.name,
           values.post
         )
       : this.props.postStudentBodyDetails(
-          values.year,
+          values.studentBodyYear,
           values.name,
           values.post
         );
@@ -58,12 +58,12 @@ class StudentBodyDetailsComponent extends Component {
               </Label>
               <Col className="co-curriculars-form-fields">
                 <Control.text
-                  model=".year"
-                  id="student-body-year"
-                  name="year"
+                  model=".studentBodyYear"
+                  id="studentBodyYear"
+                  name="studentBodyYear"
                   className="form-control"
                   placeholder="Academic Year"
-                  value={this.state.fromStudentBody ?? this.state.year}
+                  value={this.state.studentBodyYear}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -71,7 +71,7 @@ class StudentBodyDetailsComponent extends Component {
                 />
                 <Errors
                   className="text-danger error-message"
-                  model=".year"
+                  model=".studentBodyYear"
                   show="touched"
                   messages={{
                     required: "*Required ",

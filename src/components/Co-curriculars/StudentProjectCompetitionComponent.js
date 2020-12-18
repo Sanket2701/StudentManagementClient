@@ -21,20 +21,20 @@ export class StudentProjectCompetitionComponent extends Component {
     this.state.fromProjectCompetition
       ? this.props.patchStudentProjectCompetition(
           this.state._id,
-          values.year,
+          values.studentProjectYear,
           values.competitionName,
           values.projectTitle,
           values.role,
           values.position,
-          values.certificateUrl
+          values.studentProjectCertificateUrl
         )
       : this.props.postStudentProjectCompetition(
-          values.year,
+          values.studentProjectYear,
           values.competitionName,
           values.projectTitle,
           values.role,
           values.position,
-          values.certificateUrl
+          values.studentProjectCertificateUrl
         );
   }
   componentDidMount() {
@@ -60,7 +60,7 @@ export class StudentProjectCompetitionComponent extends Component {
           >
             <Row>
               <Label
-                htmlFor="year"
+                htmlFor="studentProjectYear"
                 lg={3}
                 className="co-curriculars-form-label"
               >
@@ -68,12 +68,12 @@ export class StudentProjectCompetitionComponent extends Component {
               </Label>
               <Col className="co-curriculars-form-fields">
                 <Control.text
-                  model=".year"
+                  model=".studentProjectYear"
                   id="project-competition-year"
-                  name="Competitionyear"
+                  name="studentProjectYear"
                   className="form-control"
                   placeholder="Academic Year"
-                  value={this.state.year}
+                  value={this.state.studentProjectYear}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -81,7 +81,7 @@ export class StudentProjectCompetitionComponent extends Component {
                 />
                 <Errors
                   className="text-danger error-message"
-                  model=".year"
+                  model=".studentProjectYear"
                   show="touched"
                   messages={{
                     required: "*Required ",
@@ -204,7 +204,7 @@ export class StudentProjectCompetitionComponent extends Component {
             </Row>
             <Row>
               <Label
-                htmlFor="certificateUrl"
+                htmlFor="studentProjectCertificateUrl"
                 lg={3}
                 className="co-curriculars-form-label"
               >
@@ -212,17 +212,13 @@ export class StudentProjectCompetitionComponent extends Component {
               </Label>
               <Col className="co-curriculars-form-fields">
                 <Control.text
-                  model=".certificateUrl"
+                  model=".studentProjectCertificateUrl"
                   type="url"
                   id="project-competition-certificateUrl"
-                  name="certificateUrl"
+                  name="studentProjectCertificateUrl"
                   className="form-control"
                   placeholder=""
-                  value={
-                    this.state.fromProjectCompetition
-                      ? this.state.certificateUrl
-                      : ""
-                  }
+                  value={this.state.studentProjectCertificateUrl}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -230,7 +226,7 @@ export class StudentProjectCompetitionComponent extends Component {
                 />
                 <Errors
                   className="text-danger error-message"
-                  model=".certificateUrl"
+                  model=".studentProjectCertificateUrl"
                   show="touched"
                   messages={{
                     required: "*Required ",

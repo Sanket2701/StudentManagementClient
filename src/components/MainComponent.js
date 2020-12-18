@@ -175,29 +175,29 @@ const mapDispatchToProps = (dispatch) => ({
         certificateUrl
       )
     ),
-  postStudentBodyDetails: (year, name, post) =>
-    dispatch(postStudentBodyDetails(year, name, post)),
+  postStudentBodyDetails: (studentBodyYear, name, post) =>
+    dispatch(postStudentBodyDetails(studentBodyYear, name, post)),
   postStudentProjectCompetition: (
-    year,
+    studentProjectYear,
     competitionName,
     projectTitle,
     role,
     position,
-    certificateUrl
+    studentProjectCertificateUrl
   ) =>
     dispatch(
       postStudentProjectCompetition(
-        year,
+        studentProjectYear,
         competitionName,
         projectTitle,
         role,
         position,
-        certificateUrl
+        studentProjectCertificateUrl
       )
     ),
   postStudentPublication: (
     title,
-    year,
+    studentPublicationYear,
     author,
     dateOfIssue,
     volume,
@@ -206,12 +206,12 @@ const mapDispatchToProps = (dispatch) => ({
     ISBN,
     paperType,
     paperLevel,
-    certificateUrl
+    studentPublicationCertificateUrl
   ) =>
     dispatch(
       postStudentPublication(
         title,
-        year,
+        studentPublicationYear,
         author,
         dateOfIssue,
         volume,
@@ -220,7 +220,7 @@ const mapDispatchToProps = (dispatch) => ({
         ISBN,
         paperType,
         paperLevel,
-        certificateUrl
+        studentPublicationCertificateUrl
       )
     ),
   postExtraCurriculars: (
@@ -433,32 +433,32 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   patchAttendance: (id, semester, tAttendance, praticalAttendance) =>
     dispatch(patchAttendance(id, semester, tAttendance, praticalAttendance)),
-  patchStudentBodyDetails: (id, year, name, post) =>
-    dispatch(patchStudentBodyDetails(id, year, name, post)),
+  patchStudentBodyDetails: (id, studentBodyYear, name, post) =>
+    dispatch(patchStudentBodyDetails(id, studentBodyYear, name, post)),
   patchStudentProjectCompetition: (
     id,
-    year,
+    studentProjectYear,
     competitionName,
     projectTitle,
     role,
     position,
-    certificateUrl
+    studentProjectCertificateUrl
   ) =>
     dispatch(
       patchStudentProjectCompetition(
         id,
-        year,
+        studentProjectYear,
         competitionName,
         projectTitle,
         role,
         position,
-        certificateUrl
+        studentProjectCertificateUrl
       )
     ),
   patchStudentPublication: (
     id,
     title,
-    year,
+    studentPublicationYear,
     author,
     dateOfIssue,
     volume,
@@ -467,13 +467,13 @@ const mapDispatchToProps = (dispatch) => ({
     ISBN,
     paperType,
     paperLevel,
-    certificateUrl
+    studentPublicationCertificateUrl
   ) =>
     dispatch(
       patchStudentPublication(
         id,
         title,
-        year,
+        studentPublicationYear,
         author,
         dateOfIssue,
         volume,
@@ -482,7 +482,7 @@ const mapDispatchToProps = (dispatch) => ({
         ISBN,
         paperType,
         paperLevel,
-        certificateUrl
+        studentPublicationCertificateUrl
       )
     ),
   getPersonalDetails: () => {

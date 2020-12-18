@@ -5,12 +5,12 @@ import * as ActionTypes from "../actionTypes";
 let token = localStorage.getItem("token");
 
 export const postStudentProjectCompetition = (
-  year,
+  studentProjectYear,
   competitionName,
   projectTitle,
   role,
   position,
-  certificateUrl
+  studentProjectCertificateUrl
 ) => async (dispatch) => {
   try {
     const res = await axios({
@@ -20,12 +20,12 @@ export const postStudentProjectCompetition = (
         Authorization: `Bearer ${token}`,
       },
       data: {
-        year: year,
+        studentProjectYear: studentProjectYear,
         competitionName: competitionName,
         projectTitle: projectTitle,
         role: role,
         position: position,
-        certificateUrl: certificateUrl,
+        studentProjectCertificateUrl: studentProjectCertificateUrl,
       },
     });
     if (res.data.status === "success") {
@@ -74,12 +74,12 @@ export const addStudentProjectCompetition = (studentProjectCompetition) => ({
 
 export const patchStudentProjectCompetition = (
   id,
-  year,
+  studentProjectYear,
   competitionName,
   projectTitle,
   role,
   position,
-  certificateUrl
+  studentProjectCertificateUrl
 ) => async (dispatch) => {
   try {
     const res = await axios({
@@ -89,12 +89,12 @@ export const patchStudentProjectCompetition = (
         Authorization: `Bearer ${token}`,
       },
       data: {
-        year: year,
+        studentProjectYear: studentProjectYear,
         competitionName: competitionName,
         projectTitle: projectTitle,
         role: role,
         position: position,
-        certificateUrl: certificateUrl,
+        studentProjectCertificateUrl: studentProjectCertificateUrl,
       },
     });
     if (res.data.status === "success") {

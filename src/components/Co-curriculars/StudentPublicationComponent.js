@@ -20,7 +20,7 @@ class StudentPublicationComponent extends Component {
       ? this.props.patchStudentPublication(
           this.state._id,
           values.title,
-          values.year,
+          values.studentPublicationYear,
           values.author,
           values.dateOfIssue,
           values.volume,
@@ -29,11 +29,11 @@ class StudentPublicationComponent extends Component {
           values.isbn,
           values.paperType,
           values.paperLevel,
-          values.certificateUrl
+          values.studentPublicationCertificateUrl
         )
       : this.props.postStudentPublication(
           values.title,
-          values.year,
+          values.studentPublicationYear,
           values.author,
           values.dateOfIssue,
           values.volume,
@@ -42,7 +42,7 @@ class StudentPublicationComponent extends Component {
           values.isbn,
           values.paperType,
           values.paperLevel,
-          values.certificateUrl
+          values.studentPublicationCertificateUrl
         );
   }
   handleChange(event) {
@@ -99,7 +99,7 @@ class StudentPublicationComponent extends Component {
             </Row>
             <Row>
               <Label
-                htmlFor="year"
+                htmlFor="studentPublicationYear"
                 lg={3}
                 className="co-curriculars-form-label"
               >
@@ -107,12 +107,12 @@ class StudentPublicationComponent extends Component {
               </Label>
               <Col className="co-curriculars-form-fields">
                 <Control.text
-                  model=".year"
+                  model=".studentPublicationYear"
                   id="publication-year"
-                  name="year"
+                  name="studentPublicationYear"
                   className="form-control"
                   placeholder="Academic Year"
-                  value={this.state.fromStudentPublication ?? this.state.year}
+                  value={this.state.studentPublicationYear}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -120,7 +120,7 @@ class StudentPublicationComponent extends Component {
                 />
                 <Errors
                   className="text-danger error-message"
-                  model=".year"
+                  model=".studentPublicationYear"
                   show="touched"
                   messages={{
                     required: "*Required ",
@@ -387,7 +387,7 @@ class StudentPublicationComponent extends Component {
             </Row>
             <Row>
               <Label
-                htmlFor="certificateUrl"
+                htmlFor="studentPublicationCertificateUrl"
                 lg={3}
                 className="co-curriculars-form-label"
               >
@@ -395,16 +395,13 @@ class StudentPublicationComponent extends Component {
               </Label>
               <Col className="co-curriculars-form-fields">
                 <Control.text
-                  model=".certificateUrl"
+                  model=".studentPublicationCertificateUrl"
                   type="url"
                   id="publication-certificateUrl"
-                  name="certificateUrl"
+                  name="studentPublicationCertificateUrl"
                   className="form-control"
                   placeholder=""
-                  value={
-                    this.state.fromStudentPublication ??
-                    this.state.certificateUrl
-                  }
+                  value={this.state.studentPublicationCertificateUrl}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -412,7 +409,7 @@ class StudentPublicationComponent extends Component {
                 />
                 <Errors
                   className="text-danger error-message"
-                  model=".certificateUrl"
+                  model=".studentPublicationCertificateUrl"
                   show="touched"
                   messages={{
                     required: "*Required ",

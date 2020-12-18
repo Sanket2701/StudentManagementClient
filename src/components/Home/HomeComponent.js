@@ -188,7 +188,7 @@ function RenderProjectDetails({ item, isLoading, isError }) {
         </Row>
         <Row className="row-padding">
           <Col lg={10}>
-            {i.from}-{i.to}
+            {`${i.from}`.substring(0, 10)}-{`${i.to}`.substring(0, 10)}
           </Col>
           <Button
             className="arrow-button"
@@ -313,7 +313,7 @@ function RenderStudentBodyDetails({ item, isLoading, isError }) {
     return (
       <div key={i._id}>
         <Row className="row-padding">
-          <Col>Academic Year: {i.year}</Col>
+          <Col>Academic Year: {i.studentBodyYear}</Col>
         </Row>
         <Row className="row-padding">
           <Col>Committee: {i.name}</Col>
@@ -358,7 +358,7 @@ function RenderProjectCompetitionDetails({ item, isLoading, isError }) {
     return (
       <div key={i._id}>
         <Row className="row-padding">
-          <Col>Academic Year: {i.year}</Col>
+          <Col>Academic Year: {i.studentProjectYear}</Col>
         </Row>
         <Row className="row-padding">
           <Col>Competition Name: {i.competitionName}</Col>
@@ -409,7 +409,7 @@ function RenderStudentPublications({ item, isLoading, isError }) {
       <div key={i._id}>
         <Row className="row-padding">
           <Col>Title: {i.title}</Col>
-          <Col>Academic Year: {i.year}</Col>
+          <Col>Academic Year: {i.studentPublicationYear}</Col>
         </Row>
         <Row className="row-padding">
           <Col>ISBN/E-ISSN: {i.ISBN}</Col>

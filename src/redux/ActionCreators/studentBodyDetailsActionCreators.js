@@ -4,7 +4,7 @@ import * as ActionTypes from "../actionTypes";
 
 let token = localStorage.getItem("token");
 
-export const postStudentBodyDetails = (year, name, post) => async (
+export const postStudentBodyDetails = (studentBodyYear, name, post) => async (
   dispatch
 ) => {
   try {
@@ -15,7 +15,7 @@ export const postStudentBodyDetails = (year, name, post) => async (
         Authorization: `Bearer ${token}`,
       },
       data: {
-        year: year,
+        studentBodyYear: studentBodyYear,
         name: name,
         post: post,
       },
@@ -62,9 +62,12 @@ export const addStudentBodyDetails = (studentBodyDetails) => ({
   payload: studentBodyDetails,
 });
 
-export const patchStudentBodyDetails = (id, year, name, post) => async (
-  dispatch
-) => {
+export const patchStudentBodyDetails = (
+  id,
+  studentBodyYear,
+  name,
+  post
+) => async (dispatch) => {
   try {
     const res = await axios({
       method: "PATCH",
@@ -73,7 +76,7 @@ export const patchStudentBodyDetails = (id, year, name, post) => async (
         Authorization: `Bearer ${token}`,
       },
       data: {
-        year: year,
+        studentBodyYear: studentBodyYear,
         name: name,
         post: post,
       },
@@ -81,7 +84,6 @@ export const patchStudentBodyDetails = (id, year, name, post) => async (
     if (res.data.status === "success") {
       alert("Student Body Details updated");
       dispatch(actions.reset("userStudentBodyDetails"));
-      window.location.reload(true);
     }
   } catch (err) {
     alert(err.response.data.message);

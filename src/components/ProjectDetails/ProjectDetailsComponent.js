@@ -158,7 +158,7 @@ class ProjectDetails extends Component {
                   name="from"
                   className="form-control"
                   placeholder=""
-                  value={this.state.from}
+                  value={`${this.state.from}`.substring(0, 10)}
                   onChange={this.handleChange}
                   validators={{
                     required,
@@ -184,7 +184,7 @@ class ProjectDetails extends Component {
                   name="to"
                   className="form-control"
                   placeholder=""
-                  value={this.state.to}
+                  value={`${this.state.to}`.substring(0, 10)}
                   onChange={this.handleChange}
                   validators={{
                     required,

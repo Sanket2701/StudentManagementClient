@@ -6,7 +6,7 @@ let token = localStorage.getItem("token");
 
 export const postStudentPublication = (
   title,
-  year,
+  studentPublicationYear,
   author,
   dateOfIssue,
   volume,
@@ -15,7 +15,7 @@ export const postStudentPublication = (
   ISBN,
   paperType,
   paperLevel,
-  certificateUrl
+  studentPublicationCertificateUrl
 ) => async (dispatch) => {
   try {
     const res = await axios({
@@ -26,7 +26,7 @@ export const postStudentPublication = (
       },
       data: {
         title: title,
-        year: year,
+        studentPublicationYear: studentPublicationYear,
         author: author,
         dateOfIssue: dateOfIssue,
         volume: volume,
@@ -35,7 +35,7 @@ export const postStudentPublication = (
         ISBN: ISBN,
         paperType: paperType,
         paperLevel: paperLevel,
-        certificateUrl: certificateUrl,
+        studentPublicationCertificateUrl: studentPublicationCertificateUrl,
       },
     });
     if (res.data.status === "success") {
@@ -84,7 +84,7 @@ export const addStudentPublication = (studentPublication) => ({
 export const patchStudentPublication = (
   id,
   title,
-  year,
+  studentPublicationYear,
   author,
   dateOfIssue,
   volume,
@@ -93,7 +93,7 @@ export const patchStudentPublication = (
   ISBN,
   paperType,
   paperLevel,
-  certificateUrl
+  studentPublicationCertificateUrl
 ) => async (dispatch) => {
   try {
     const res = await axios({
@@ -104,7 +104,7 @@ export const patchStudentPublication = (
       },
       data: {
         title: title,
-        year: year,
+        studentPublicationYear: studentPublicationYear,
         author: author,
         dateOfIssue: dateOfIssue,
         volume: volume,
@@ -113,7 +113,7 @@ export const patchStudentPublication = (
         ISBN: ISBN,
         paperType: paperType,
         paperLevel: paperLevel,
-        certificateUrl: certificateUrl,
+        studentPublicationCertificateUrl: studentPublicationCertificateUrl,
       },
     });
     if (res.data.status === "success") {
